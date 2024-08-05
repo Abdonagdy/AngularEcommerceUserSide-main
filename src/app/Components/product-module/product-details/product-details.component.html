@@ -1,0 +1,241 @@
+<section class="p-3" style="background-color: #fff;">
+	<div>
+    <p class="text-center" style="font-weight: bold;">{{urldesc}}</p>
+  </div>
+</section>
+<section class="container-fluid p-5 " style="background-color: #f3f3f3;" >
+  <section class="row d-flex justify-content-start">
+    <app-filter-aside class="d-sm-flex d-md-flex  d-lg-flex d-xl-flex d-xll-flex col-xxl-3 col-xl-3 col-lg-3 col-md-12  col-sm-12  mb-5 p-2" style="max-width: 700px;"></app-filter-aside>
+<section class="row   d-sm-flex flex-column d-md-flex flex-md-column d-lg-flex flex-lg-row justify-content-around  col-lg-8 col-md-12 col-sm-12 mb-5" >
+    <!-- Image -->
+    <section class="col-xxl-10 col-xlg-10 col-lg-10 col-md-10 col-sm-10  mb-4  p-5" >
+      <!-- <div class="d-flex   "> -->
+        <!-- <div class="d-flex flex-column mt-5">
+      <div>
+            <div class="pord mb-1">
+              <img #img src="{{PoductDetails.images}}" class="imgs" style="width: 100%; height: 100%; " (mouseover)="getSrc(PoductDetails.images[0])">
+            </div>
+       </div>
+        </div> -->
+
+ 
+      <!-- <div class="contain"> -->
+          
+        <img src="{{img}}" [hidden]="src"  style="height: 600PX;width: 100%;border: 2px solid #fff;border-radius: 10px;"> 
+
+       <!-- </div> -->
+
+      
+  
+      <!-- </div> --> 
+
+
+    </section>
+
+
+    
+
+  <section class="col-xxl-10 col-xl-10 col-lg-10  col-md-10 col-sm-10 bg-white mb-2 mx-3 p-4" style="font-size: 15px;">
+
+      <section class="d-flex flex-column ">
+
+
+      <section class="text-black text-center">
+        <section *ngIf="currentLanguage == 'en'">
+          <h2 style="border-bottom: 1px solid #f3f3f3;color: #000;" class="pt-2 pb-2">{{nameEn}}</h2> 
+         
+        </section>
+        <section *ngIf="currentLanguage == 'ar'">
+          <h2 style="border-bottom: 1px solid #f3f3f3;color: #000;" class="pt-2 pb-2">{{name}}</h2> 
+         
+        </section>
+        <section *ngIf="shortDescription !=null && currentLanguage == 'en'">
+          <p style="border-bottom: 1px solid #f3f3f3;color: #aaa;" class="pt-2 pb-2 ">
+              {{shortDescriptionen}} 
+          </p> 
+        </section>
+        <section *ngIf="shortDescription !=null && currentLanguage == 'ar'">
+          <p style="border-bottom: 1px solid #f3f3f3;color: #aaa;" class="pt-2 pb-2 ">
+              {{shortDescription}} 
+          </p> 
+        </section>
+          <section>
+          <p style="border-bottom: 1px solid #f3f3f3;color: #aaa;" class="pt-2 pb-2 ">
+            {{'Service Code' |translate}} : <span class="text-black">{{serviceCode}}</span>  
+          </p>  
+        </section>
+        <ng-container *ngIf="name !='صيانة عامة'">       
+            <p style="border-bottom: 1px solid #f3f3f3;color: #aaa;" class="pt-2 pb-2 ">
+              <span style="color: orange; font-weight: 600;" [ngStyle]="{ 'direction': currentLanguage === 'ar' ? 'rtl' : 'ltr' }">{{price|currencyLocalized}} {{'incl tax'|translate}}</span>  
+          
+          
+              <ng-container *ngFor="let item1 of CtegoryId">
+           
+                  <ng-container *ngIf="item1 !=8 && item1 <=7 && !isPrinted">
+                    
+                  </ng-container>
+              </ng-container>
+
+          <ng-container *ngIf="!isPrinted && CtegoryId < 7">
+                  
+            <span style="border-bottom: 1px solid #f3f3f3;color: #aaa;" class="pt-2 pb-2 mx-2">
+              <del>{{oldPrice |currencyLocalized}} {{'incl tax'|translate}}</del> 
+          </span>
+       
+          </ng-container>
+
+        </p>
+        </ng-container>
+          
+          <ng-container *ngIf="name=='صيانة عامة'">
+            <label for="id" class="">{{'Write The Price  :' | translate}}</label>
+            <input class="mx-3" type="number" min="100" max="250000" name="price" id="price"  (input)="handleChange($event.target)" [(ngModel)]="inputprice" style="width:70px;height:45px;border:none; background-color: #eee;text-align: center;font-weight: 700;border-radius:0 ;color: #444;padding: 2px;vertical-align: middle;font-size:20px;">
+            <p class="mt-2" style="border-bottom: 1px solid #f3f3f3;color: #aaa;">يجب أن يكون السعر من 100٫00 ر.س.‏ إلى 2٬500٫00 ر.س.‏</p>
+          </ng-container> 
+          
+          
+          <aside class="d-flex flex-row justify-content-center align-items-center col-12   b-0 text-center" style="border-bottom: 1px splid #f3f3f3;">
+            <div class="col-8">
+              <section class="shadow p-2 mt-2 mb-2 bg-warning rounded ">
+                <section>
+                  <i class="fa-solid fa-cart-shopping" style="color: white;"></i> <span class="fw-bold mx-2 text-white text-bold">{{'Add to Cart'|translate}}</span>
+                </section>
+                <section class="d-flex flex-row justify-content-center bg-warning  mt-2">
+                  <a  class="me-3 clik"><i class="fa-solid fa-plus mx-2" (click)="inccrementitem(PoductDetails)"></i></a>
+                  
+                  <p class="fw-bold">{{count}}</p>
+                  <a  class="ms-3 clik" [hidden]="quantity > quantity"><i class="fa-solid fa-minus mx-2" (click)="removeitem()" ></i></a>
+                  <a  class="text-decoration-none ms-2">
+                  </a>
+                 
+                </section>
+                <section class="d-flex flex-row justify-content-between ">
+                <button type="button" class="btn btn-success fw-bold  col-6"(click)="additemtobasket()">{{'Add to Cart'|translate}}</button>
+                <button class="btn btn-outline-success" (click)="AddProductToWishlist(PoductDetails.id)"><i class="fas fa-heart text-muted p-md-1 my-1 me-0 hoverheart" data-mdb-toggle="tooltip" data-mdb-placement="top"
+                  title="I like it"></i></button>
+              </section>
+                </section>
+         
+            </div>
+          </aside>
+
+          
+      <!-- Description-->
+      <section class="mt-3 p-2" style="font-size: 12px;border-top: 1px solid #f3f3f3;" #htmlContainer>
+        
+      </section>
+
+    <!-- Artical -->
+    <div *ngIf="articals.length !=0">
+            <article style="border-bottom: 1px solid #f3f3f3;" class="mt-4">
+              <h3 style="border-bottom: 1px solid black;">مقالات ذات صلة</h3>
+                <section>
+                  <section style="background-color: #fff;">
+                    <div>
+                      <ng-container *ngFor="let item of articals">
+                      <div class="col-12">
+                      
+                        <div class="row g-4 p-2 mt-4" style="border: 2px solid #f3f3f3;border-radius: 50px;">
+                        <ng-container *ngIf="item.imageURL !=null">
+                            <div class="col-3">
+                              <img src={{item.imageURL}} style="width: 100%;height:100px ;" alt="صورة المقال">
+                            </div>
+                            <div class="col-9 d-flex flex-column position-static">
+                              <div class="mb-1 mt-1 text-muted">{{item.date}}</div>
+                              <strong class="d-inline-block mb-2 text-black">{{item.articalName}}</strong>                   
+                              <span class="card-text mb-auto d-inline" style="overflow: hidden;" [innerHTML]="item.articalDescription|slice:0:100">...</span>
+                            <a  class="text-warning text-decoration-none" dir="ltr" style="cursor: pointer;font-size: 18px;" (click)="VeiwDetails(item.articalId , item.articalName)">قراءة المزيد</a>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="item.imageURL ==null">
+                          <div class="col-12 d-flex flex-column position-static">
+                            <div class="mb-1 mt-1 text-muted">{{item.date}}</div>
+                            <strong class="d-inline-block mb-2 text-black">{{item.articalName}}</strong>                   
+                            <span class="card-text mb-auto d-inline" style="overflow: hidden;" [innerHTML]="item.articalDescription|slice:0:100"></span>
+                          <a  class="text-warning text-decoration-none" dir="ltr" style="cursor: pointer;font-size: 18px;" (click)="VeiwDetails(item.articalId , item.articalName)">قراءة المزيد</a>
+                          </div>
+                      </ng-container>
+                        </div>
+                  
+                  </div>
+                </ng-container>
+                
+                </div>  
+                </section>
+                
+                </section>
+            </article>
+      </div>
+
+
+      </section>
+       
+        
+      
+      </section>
+ 
+
+
+  </section>
+ 
+</section>
+  </section>
+  
+</section>
+
+<!-- review -->
+<section class="container-fluid p-5 text-center d-flex justify-content-center align-items-center" style="background-color: #f3f3f3;">
+<section class="row container-fluid " style="background-color: #fff;">
+  <section class="product-reviews">
+    <!-- Product reviews HTML code goes here -->
+  
+    <section class="container p-5">
+      
+      <section *ngFor="let review of reviews1" class="bg-warning">
+        <section class="card mb-3">
+          <section class="card-body">
+            <h5 class="card-title text-black"><span>{{'UserName'|translate}}</span>{{review.userName }}</h5>
+            <p class="card-text text-black"><span>{{'Comment :' |translate }}</span>{{review.comment }}</p>
+            <p class="card-text text-black"><span>{{'Rate :' |translate }}</span><span class="fa fa-star checked" style="color: orange;"></span> {{ review.ratingValue}}</p>
+            <p class="card-text text-black"><small class="text-muted">{{ review.date}}</small></p>
+          </section>
+        </section>
+      </section>
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" class="mt-4">
+        <section class="form-group">
+          <span >{{'Comment'|translate}}</span>
+          <textarea id="comment" formControlName="comment" class="form-control"></textarea>
+          <section *ngIf="!reviewForm.invalid" class="invalid-feedback">
+            {{'Comment must be less than 500 characters'|translate}}
+          </section>
+        </section>
+        <section class="form-group mt-2">
+          <span >{{'ratingValue'|translate}}</span>
+          <section class="star-rating">
+            <section class="rate">
+                <input type="radio" id="star5" name="ratingValue"  value="5" formControlName="ratingValue" />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="ratingValue" value="4" formControlName="ratingValue" />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="ratingValue" value="3" formControlName="ratingValue" />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="ratingValue" value="2" formControlName="ratingValue" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="ratingValue" value="1" formControlName="ratingValue" />
+                <label for="star1" title="text">1 star</label>
+              </section>
+          </section>
+          <section *ngIf="!reviewForm.controls.ratingValue.value" class="invalid-feedback">
+            {{'Rating is required'|translate}}
+          </section>
+        </section><br><br><hr>
+        <button type="submit" [disabled]="reviewForm.invalid" class="btn btn-primary">{{'Submit' | translate}}</button>
+      </form>
+    </section>
+
+  </section>
+</section>
+</section>
+
+
+

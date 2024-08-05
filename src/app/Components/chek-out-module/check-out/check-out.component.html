@@ -1,0 +1,27 @@
+
+<div class="container-fluid mb-5" style="background-color: #f3f3f3;">
+  <div class="row">
+
+    <aside class="col-lg-4 col-md-12 col-sm-12 mb-5">
+      <app-sumarry-order></app-sumarry-order>
+    </aside>
+<section class="col-lg-8 col-md-12 col-sm-12">
+<app-stepper [LinearModeSelected]="false">
+  <cdk-step [label]="'Adress'|translate">
+   <app-adress [ChekoutForm]="ChekoutForm"></app-adress>
+  </cdk-step>
+  <cdk-step [label]="'Payment methods' |translate">
+    <app-shiping-method [ChekoutForm]="ChekoutForm"></app-shiping-method>
+   </cdk-step>
+   <cdk-step [label]="'Products' |translate">
+    <app-review></app-review>
+   </cdk-step>
+   <cdk-step [label]="'Order confirmation'|translate">
+    <app-payment></app-payment>
+   </cdk-step>
+</app-stepper>
+
+   </section>
+  </div>
+
+</div>

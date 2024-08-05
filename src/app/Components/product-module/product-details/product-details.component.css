@@ -1,0 +1,84 @@
+*
+{
+ 
+  box-sizing: border-box;
+}
+
+
+hr.style1 {
+	border-top: 3px solid #000000;
+}
+
+.coloor
+{
+  color: #338ba5;
+}
+.imgs{
+  width: 100%;
+  height: 100%;
+ transition: transform .2s; /* Animation */
+}
+.hover3:hover{
+  transform: rotate(90deg) !important;
+}
+.bigimg{
+  width: 100%;
+  height: 100%;
+}
+.contain{
+  height: 100%;
+  width: 100%;
+}
+.pord{
+  border: 1px;
+  border-style: solid;
+}
+.selected-image {
+  position: absolute;
+
+
+}
+
+
+
+
+.rate {
+  
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+
+.hoverheart:hover
+{
+  color: red !important;
+}

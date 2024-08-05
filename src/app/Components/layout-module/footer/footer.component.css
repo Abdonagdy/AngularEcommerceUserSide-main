@@ -1,0 +1,173 @@
+*
+{
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.bgyfy
+{
+  background-color: #fff;
+  width: 100%;
+}
+
+@media screen and (max-width: 577px) {
+  .bgyfy {
+    display: none !important;
+  }
+}
+
+
+.links span
+{
+  font-size: 15px;
+
+}
+
+
+.links span:hover
+{
+  color: #ffa424;
+}
+.links  a
+{
+  color: #888;
+  font-size: 15px;
+  
+}
+
+
+.links a:hover
+{
+  color: orange !important;
+}
+
+ /* watsup */
+.whatsapp_float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff ;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+.whatsapp_right {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  left: 40px;
+  background-color: #25d366;
+  color: #fff ;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  text-decoration:none ;
+}
+.whatsapp_right span
+{
+  color: orange;
+  width: 100%;
+}
+.whatsapp-icon {
+  margin-top: 16px;
+}
+
+/* for mobile */
+@media screen and (max-width: 767px){
+  .whatsapp_float {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    left: 10px;
+    font-size: 22px;
+  }
+  .whatsapp_right {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    left: 10px;
+    font-size: 22px;
+  }
+  .whatsapp_right span 
+  {
+    margin-bottom: 100px;
+  }
+}
+/* end watsup */
+
+.scroll-to-top {
+  position: fixed;
+  bottom:20px;
+  right: 50%;
+}
+
+ /* watsup */
+.whatsapp_chat {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
+.mobile-container {
+  max-width: 480px;
+  margin: auto;
+  background-color: #555;
+  height: 500px;
+  color: white;
+  border-radius: 10px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.active {
+  background-color: #04AA6D;
+  color: white;
+}

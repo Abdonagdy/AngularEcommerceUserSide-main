@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="mt-4" *ngIf="ChekoutForm"  [formGroup]="ChekoutForm">
+    <div class=" row" formGroupName="Deleviryform">
+      <div class="form-group col-lg-4 col-md-6 col-sm-12 " *ngFor="let item of AllShiping">
+  
+    
+          <input type="radio" id="{{item.id}}"  value="{{item.id}}" formControlName="DelaviryMethod" class="from-check-input mt-4" (click)="setshiping(item)">
+          <label for="{{item.id}}" class="form-check-label">
+        <strong>{{item.name}}</strong>
+        </label>
+        
+      </div>
+  
+    </div>
+    <div class="d-flex justify-content-between flex-row mt-3 mb-5">
+      <button type="button" class="btn btn-primary" cdkStepperPrevious><i class="fa fa-angle-left me-2"></i>{{'Back' | translate}}</button>
+      <button type="button" class="btn btn-primary" cdkStepperNext>{{'Next' | translate}}<i class="fa fa-angle-right ms-2"></i></button>
+  
+  
+    </div>
+  
+  </div>  
+</div>
+
+
+

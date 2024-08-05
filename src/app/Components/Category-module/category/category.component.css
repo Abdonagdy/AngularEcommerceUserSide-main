@@ -1,0 +1,38 @@
+*{
+  font-size: 16px;
+  padding: 0 px;
+  margin: 0 px;
+  box-sizing: border-box;
+}
+.clik{
+  cursor: pointer;
+}
+
+img{
+  width: 100%;
+  max-height: 450px !important;
+}
+
+.hover1:hover
+{
+  color: orange !important;
+}
+.hover2:hover{
+  opacity: .8;
+  transition: all 200ms ;
+  
+  }
+
+
+body{
+  background-color: #EAEDED;
+}
+.cart{
+  background-color: #FFFFFF;
+}
+hr.style2 {
+	border-top: 1px solid #000000;
+}
+hr.style1 {
+	border-top: 3px solid #000000;
+}

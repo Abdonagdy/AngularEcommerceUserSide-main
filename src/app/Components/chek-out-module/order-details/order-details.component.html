@@ -1,0 +1,172 @@
+<div class="container-fluid" style="background-color: #f3f3f3;">
+  <div class="text-center p-3">
+    <button class="btn btn-warning" (click)="print()">{{'Print Your Order' |translate}}</button> 
+    <button class="btn btn-warning" (click)="genrate()">{{'pdf' |translate}}</button> 
+  </div>
+  <div   class="row p-5"  id="sectionToPrint">
+    <div class="fs-1  shadow p-3 mb-5  rounded  mt-4 col-12 text-center" style="color: rgb(7, 7, 94);">
+      {{'Order Details' |translate}}
+    </div>
+
+    <section class="col-sm-12 col-md-12 col-lg-7" [dir]="currentLanguage=='ar'?'rtl':'ltr'" >
+    <div class="d-sl-block d-lg-flex d-md-block justify-content-around bg-light shadow  p-3   rounded mb-5 mt-4">
+     <!-- <div   class="table table-striped table-bordered border-dark table-hover ">
+    
+        
+     </div> -->
+
+
+     <table class="table table-striped table-striped  table-hover table-hover">
+      <tr style="color: rgb(7, 7, 94);">
+         <th scope="row" style="width: 20%;">
+         {{'Product Image' |translate}}
+       </th>
+       <th scope="row">{{'Product Name' |translate}}</th>
+       <th scope="row">{{'Service Code' |translate}}</th>
+       <th scope="row">{{'Price' |translate}}</th>
+       <th scope="row">{{'Quantity'| translate}}</th>
+       <th scope="row">{{'Total'| translate}}</th> 
+     </tr>
+       <ng-container  *ngFor="let item of Prosucts" >
+
+      <tr style="color: rgb(7, 7, 94);">
+      <td scope="row"><img src="{{item.images}}" width="100%" height="100px"></td>   
+    
+      <td *ngIf="currentLanguage=='ar'"> 
+                  {{item.name}}
+     </td>
+   
+      <td *ngIf="currentLanguage=='en'">
+                   {{item.nameEN}}
+      </td>
+      <ng-container *ngIf="item.name !='صيانة عامة'">
+      <td>{{item.serviceCode}}</td>
+      <td>  
+       {{item.price}} {{'SAR inclusive of tax.' | translate}}</td>
+      
+       <td>{{item.quantity}}</td>
+       <td>{{item.price}} <span>{{'SAR' |translate}}</span></td>
+      </ng-container>
+      <ng-container *ngIf="item.name =='صيانة عامة'">
+        <td>{{item.serviceCode}}</td>
+        <td>  
+          {{total}} {{'SAR inclusive of tax.' | translate}}</td>
+        
+         <td>{{item.quantity}}</td>
+         <td>{{total}} <span>{{'SAR' |translate}}</span></td>
+        </ng-container>
+     </tr>
+        </ng-container>
+        </table>
+
+     
+
+
+    </div>
+    </section>
+
+<div class="col-sm-12 col-md-12 col-lg-5 " [dir]="currentLanguage=='ar'?'rtl':'ltr'">
+  <div class="col-sm-12 col-md-12 col-lg-12 ">
+    <aside class="bg-light p-4 shadow p-3  cart rounded  mb-5 mt-4 ">
+      <div class="fs-4" style="color: rgb(7, 7, 94);">
+        {{'Adress' |translate}} 
+      </div>
+      <hr>
+    
+        <div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+          <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+          <span style="font-weight:bold ;" class="mx-3">{{'Email' | translate}} :</span>
+          <span> {{email}}</span>
+          
+      </div>
+
+      <div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+        <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+        <span style="font-weight:bold ;" class="mx-3">{{'Country' | translate}} :
+        </span>
+        <span> {{country}}</span>
+        
+    </div>
+    <div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+      <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+      <span style="font-weight:bold ;" class="mx-3">{{'City'|translate}} :
+      </span>
+      <span>  {{city}} </span>
+      
+  </div>
+   
+  <div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+    <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+    <span style="font-weight:bold ;" class="mx-3">{{'region'|translate}} :
+    </span>
+    <span>{{branch}} </span>
+</div>
+
+<hr>
+  <h5 class="fw-bold" style="color: rgb(7, 7, 94);">{{'Your Order' | translate}}</h5>
+  <hr>
+
+  <div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+    <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+    <span style="font-weight:bold ;" class="mx-3">{{'Order Number' | translate}}
+    </span>
+    <span><span>MZ</span>{{id}}</span>
+</div>
+
+
+<div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+  <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+  <span style="font-weight:bold ;" class="mx-3">{{'Date' |translate}} :
+  </span>
+  <span>{{date |date :'yyyy-MM-dd'}}</span>
+</div>
+<div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+  <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+  <span style="font-weight:bold ;" class="mx-3">{{'Payment Method' |translate}} :
+  </span>
+  <span>{{ShopingMethodNAME}}</span>
+</div>
+<div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+  <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+  <span style="font-weight:bold ;" class="mx-3">{{'Status' |translate}} :
+  </span>
+  <span>{{status}}</span>
+</div>
+<div class="d-flex flex-row justify-content-start align-items-center p-3" style="color: rgb(7, 7, 94);">
+  <div style="background-color: #f1c40f;width: 25px;height: 25px;"></div>
+  <span style="font-weight:bold ;" class="mx-3">{{'Status' |translate}} :
+  </span>
+  <span>{{Shipping}}</span>
+</div>
+<hr>
+<div class="row">
+  <div class="col-6 fw-bold" style="color: rgb(7, 7, 94);">{{'Sub-Total' |translate}} </div>
+  <div class="col-6 text-right" style="color: rgb(7, 7, 94);">{{total}} <span class="mx-2">{{'SAR' | translate}}</span> </div>
+  <div class="col-6 fw-bold" style="color: rgb(7, 7, 94);">{{'Tax' |translate}} </div>
+  <div class="col-6 text-right" style="color: rgb(7, 7, 94);">{{tax}} <span class="mx-2">{{'SAR' | translate}}</span> </div>
+</div>
+  <hr>
+  <div class="row">
+    <div class="col-6 fw-bold" style="color: rgb(7, 7, 94);">{{'Total' |translate}} :</div>
+    <div class="col-6 text-right" style="color: rgb(7, 7, 94);">{{total}} <span class="mx-2">{{'SAR' | translate}}</span> </div>
+  </div>
+
+
+    </aside>
+  </div>
+ 
+
+</div>
+  
+
+  
+
+  </div>
+  <div class="text-center mb-3 p-3">
+    <a routerLink="/Orders" class="btn btn-warning">{{'Back To All Orders' |translate}}</a>
+   </div>
+</div>
+
+
+
+

@@ -1,0 +1,72 @@
+*{
+  padding: 0 px;
+  margin: 0 px;
+  box-sizing: border-box;
+}
+.clik{
+  cursor: pointer;
+}
+
+img{
+  width: 100%;
+  height: 20vh;
+}
+
+
+hr.style2 {
+	border-top: 1px solid #000000;
+}
+hr.style1 {
+	border-top: 3px solid #000000;
+}
+
+
+svg {
+  
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(2px 2px 2px orange);
+  background-color: rgba(255, 230, 0, 0.788);
+}
+
+
+
+
+/* أسلوب CSS لعرض العناصر بشكل مخصص لمقاسات محددة للشاشة */
+
+/* للشاشات الكبيرة مثل الحواسيب */
+@media only screen and (min-width: 1200px) {
+  /* قم بتحديد العرض الخاص بالعناصر هنا */
+  .tt {
+      width: 70%; /* عرض 20% من عرض الشاشة */
+     height: 100px;
+  }
+  table tr{
+    max-height: 100px !important;
+  }
+  .bb {
+    width: 25%; /* عرض 20% من عرض الشاشة */
+}
+}
+
+/* للشاشات المتوسطة مثل الأجهزة اللوحية */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  /* قم بتحديد العرض الخاص بالعناصر هنا */
+  .tt {
+    width: 100%; /* عرض 20% من عرض الشاشة */
+}
+.bb {
+  width: 100%; /* عرض 20% من عرض الشاشة */
+}
+}
+
+/* للشاشات المتوسطة مثل الأجهزة اللوحية */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  /* قم بتحديد العرض الخاص بالعناصر هنا */
+  .tt {
+    width: 100%; /* عرض 20% من عرض الشاشة */
+}
+.bb {
+  width: 100%; /* عرض 20% من عرض الشاشة */
+}
+}

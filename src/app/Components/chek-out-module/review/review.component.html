@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <ng-container *ngIf="(basketitem |async) as basket">
+  <table class="table " >
+      <thead>
+        <tr>
+          <th scope="col-6">{{'Product'|translate}}</th>
+          <th scope="col-2">{{'Quantity' | translate}}</th>
+          <th scope="col-2">{{'Price' | translate}}</th>
+          <th scope="col-2">{{'Total'|translate}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of basket.items">
+        <tr>
+          <td ><div class="d-flex col-8">
+            <img src="{{item.image}}" alt="" class="me-2">
+            <ng-container *ngIf="currentLanguage=='ar'"> 
+            {{item.name}}
+            </ng-container>
+            <ng-container *ngIf="currentLanguage=='en'"> 
+              {{item.nameEN}}
+              </ng-container>
+          </div></td>
+          <td class="col-2 ">
+            <div class="ms-3">
+              {{item.quantity}}
+            </div>
+
+           </td>
+          <td class="col-2">{{item.price}}</td>
+          <td class="col-2">{{item.quantity * item.price}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    </ng-container>
+
+<div class="d-flex justify-content-between flex-row mb-5">
+  <button type="button" class="btn btn-primary" cdkStepperPrevious><i class="fa fa-angle-left me-2"></i>{{'Back' | translate}}</button>
+  <button type="button" class="btn btn-primary" cdkStepperNext>{{'Next' | translate}}<i class="fa fa-angle-right ms-2"></i></button>
+
+</div>
+
+  </div>
+
+</div>

@@ -1,0 +1,525 @@
+<header id="goToTop">
+</header>
+  <section class="container-fluid shadow rounded" style="background-color: rgba(255, 166, 0, 0.774);">
+
+
+
+    <section class="d-flex flex-column justify-content-center align-items-center" >
+      <nav id="navcolo" class="navbar  d-none  d-lg-flex  d-xl-flex d-xxl-flex justify-content-between p-2 " style="border-bottom: 2px solid #fff !important;width: 98%;">
+        <div class="" >
+          <div class="">
+            <a routerLink="/Home" class="mx-2 text-decoration-none">
+              <img  src="assets/WhatsApp Image 2023-10-04 at 2.25.05 PM.jpeg" id="imgde" class="img-fluid" />
+              <span class="mx-3 text-black" style="font-size: 25px;font-weight: bold;">{{'Mize'|translate}}</span>
+            </a>
+          </div>
+      </div>
+      
+      <div class="d-flex  justify-content-between align-items-center">
+        <div class="d-flex">
+          <div class="d-flex align-items-center" >
+             <div class="" >
+               <a (click)="switchToArabic()" style="cursor: pointer;" title="اللغة">
+                 <input
+                 type="radio"
+                 id="html"
+                 name="fav_language"
+                 value="lang1" checked
+                 style="z-index: 0; opacity: 0;"
+               />
+               <span  *ngIf="langFlag==true"><img src="assets/sa.png" class="img-ico" /><span class="mx-2 text-white">{{'AR'|translate}}</span> </span>
+               </a>
+             </div>
+             <div class="" >
+               <a (click)="switchToEnglish()" style="cursor: pointer;" title="اللغه">
+                 <input
+                 type="radio"
+                 id="lang2"
+                 name="fav_language"
+                 value="HTML"
+                 style="z-index: 0; opacity: 0;"
+               />
+               <span  *ngIf="langFlag==false"><img src="assets/br.png" class="img-ico" /><span class="mx-2 text-white">EN</span></span>
+               </a>
+             </div>
+            
+           <!-- </ul> -->
+         </div>
+       </div>
+    
+      
+    
+    
+      <ng-container  *ngIf="(user.CurrentUser$ |async )==null">
+    
+      <div class="hovee bg-body p-2 mx-2">
+        <a  style="color:#888" routerLink="/register"  class="text-decoration-none" title="تسجيل مستخدم جديد">
+          <i class="fas fa-user-plus fa-lg"></i>
+        </a>
+      </div>
+    </ng-container>
+    
+    <ng-container *ngIf="(user.CurrentUser$ |async) as user">
+        <div class="d-flex hovee bg-body p-2 mx-2" >
+                <a routerLink="/UserInfo"  class="text-decoration-none text-black" style="color:#888" href="" title="بيانات المستخدم"><i class="far fa-user fa-lg"></i>
+             </a> 
+        </div>
+      </ng-container>
+
+    
+        <div class="hovee bg-body p-2 mx-2">
+          <a class="hovee" style="color:#888" routerLink="/WishList" class="text-decoration-none text-black" title="المفضلة"><i class="far fa-heart fa-lg"></i>
+        </a >
+        </div>
+        <div class="hovee bg-body p-2 mx-2">
+          <a class="hovee" style="color:#888" routerLink="/Orders" class="text-decoration-none text-black" title="الطلبات"><i class="fa-solid fa-eye"></i>
+          </a >
+        </div>
+    
+      </div>
+        
+      </nav>
+  
+      <!-- desktop -->
+      <nav class="navigator d-none d-md-none d-lg-flex d-xl-flex d-xxl-block hover p-2" style="width: 98%;">
+        <div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+          <section class="d-flex  flex-row justify-content-between align-items-center" style="width: 83%;">
+        
+         
+            <section class="p-2 hover h">
+              <a routerLink="/Home" class="text-decoration-none text-black text-bold  hover active">{{'Home'|translate}}</a>
+            </section>
+            <section class="p-2 hover h">
+              <a style="cursor: pointer;"  routerLink="/Offers" class="text-decoration-none text-black h hover ">{{'Offers'|translate}}</a>
+            </section>
+  
+            <section class="p-2 hover h">
+              <a style="cursor: pointer;"  (click)="VeiwProductCategory(8)" class="text-decoration-none text-black  hover">{{'Packages'|translate}}</a>
+            </section>
+  
+            <section class="p-2 hover h">
+              <a routerLink="/AppointmentBooking" class="text-decoration-none text-black h hover">{{'Booking' | translate}}</a>
+            </section>
+            <section class="p-2 hover h">
+              <a routerLink="/OurServices" class="text-decoration-none text-black h hover">{{'Service'|translate}}</a>
+            </section>
+            
+            <section class="p-2 hover h">
+              <a routerLink="/AboutUs" class="text-decoration-none text-black h hover">{{'AboutUs'|translate}}</a>
+            </section>
+            <section class="p-2 hover h">
+              <a routerLink="/ContactUs" class="text-decoration-none text-black h  hover">{{'ContactUs'|translate}}</a>
+            </section>
+  
+            <section class="p-2 hover h">
+              <a routerLink="/SocailMedia" class="text-decoration-none text-black h hover">{{'Socail Media'|translate}}</a>
+            </section>
+  
+           
+            
+        <div class="" style="position: relative;">
+           
+        <form class="container-fluid">
+          <div class=" d-flex  input-group p-1">
+            <input
+              id="Search-input"
+              type="text"
+              class="form-control"
+              size="29"
+              placeholder="{{'Search'|translate}}"
+              aria-label="Search Store"
+              aria-describedby="basic-addon1"
+              style="background-color: #fff;vertical-align: middle;height: 45px;border-radius:20px ;border: 0; text-decoration: none;padding: 0 0 0 0;font-size: 14px;outline: #fff;text-transform: none;text-shadow: none;"
+            class="text-center"
+            #inputString (keyup)="filterByName(inputString.value)"
+            
+              />
+            <span>
+              <button class="d-flex btn  bouto2 mx-1">
+                <a id="ancorsearch" href="#Search-input"
+                  ><i
+                    style="color: #aaa"
+                    class="fa-solid fa-magnifying-glass"
+                  ></i
+                ></a>
+              </button>
+            </span>
+  
+  
+            <!-- hover of drop down menue -->
+          </div>
+        </form>
+           
+        <ul  class="row d-flex flex-column  align-items-center" style="position: absolute;width: 100%;height:auto;z-index: 963258;">
+    
+          <ng-container *ngFor="let item of searchItems">
+            <a (click)="VeiwProduct(item)" style="cursor: pointer;">
+             <li style="z-index: 9999;background-color: #f3f3f3;color: #000;border-bottom: 1px solid #fff;" class="row d-flex flex-row justify-content-between align-items-center p-2">
+              <div class="col-3">
+                <img src={{item.images}} style="width: 100%;height: 100px;" alt="">
+              </div>
+                 <div class="col-8 row d-flex flex-column  align-items-center">
+                  <div class="col-12">{{item.name}}</div>
+          
+                  <div class="col-12"><span> {{'Service Code'|translate}} :</span>{{item.serviceCode}}</div>
+                  
+      
+             <div class="col-12"> {{item.price}} {{'SAR inclusive of tax.' | translate}}</div>
+                 </div>
+                   
+           </li>
+          
+          </a>  
+      
+          <li *ngIf="searchItems==null">
+            <div>
+             لا توجد خدمات بهذا الاسم
+            </div>
+          </li>
+           </ng-container>
+         </ul>
+       </div>
+       
+  
+      
+          </section>
+
+          <section class="d-flex  justify-content-end" style="width: 17%;">
+            <div class="bg-body p-2 mx-3 text-center" style="border: 2px solid #f3f3f3; border-radius: 7px ;width: 50%;">
+              <a routerLink="/basket" class="text-decoration-none text-black">
+                <ng-container *ngIf="(basketinfo |async) as basket">
+                   <span class="fw-bold  text-black  mx-2" style="font-size: 12px;font-weight: bold;">{{getcount(basket.items)}}</span>
+                 <span style="font-size: 12px;font-weight: bold;">{{'Shopping cart'|translate}}</span>  
+                </ng-container>
+                <ng-container *ngIf="(basketinfo |async) == null">
+                  <span class="fw-bold mx-2  text-black" style="font-size: 12px;font-weight: bold;">0</span>
+                  <span style="font-size: 12px;font-weight: bold;">{{'Shopping cart'|translate}}</span>  
+               
+               </ng-container>
+            
+          
+              </a>
+            </div>
+            
+            <div class="bg-body p-2 text-center"  style="border: 2px solid #f3f3f3; border-radius: 12px;width: 50%;">
+              <ng-container  *ngIf="(user.CurrentUser$|async )==null">
+          
+                <a class="aaa" style="color:#888" (click)="checkRadioButton()"  class="text-decoration-none  text-black" style="font-size: 12px;font-weight: bold;cursor: pointer;"> {{'Login'|translate}}
+                </a >
+              
+            </ng-container> 
+            <ng-container  *ngIf="(user.CurrentUser$ |async) as user" class="hovee">   
+              <a  (click)="Logout()"  class="text-decoration-none text-black" style="font-size: 12px;font-weight: bold;cursor: pointer;">{{'Sign Out'|translate}}
+              </a>
+           
+          </ng-container>
+         
+            </div>
+           
+           
+         </section>
+     
+        </div>
+        
+      </nav>
+         
+    </section>
+
+
+ 
+   
+  </section>
+  <!-- //desktoop// -->
+
+
+
+
+
+
+
+  <!-- mobile -->
+  <nav id="navcolo" class="p-2 d-lg-none d-xl-none d-xxl-none" style="background-color: rgba(255, 166, 0, 0.774);">
+    <div class="d-flex justify-content-between align-items-center" style="border-bottom: 2px solid #fff;max-height: 100px;">
+     
+      <div class="p-2" style="background-color: #f3f3f3;">
+        <a routerLink="/basket" class="text-decoration-none">
+          <ng-container *ngIf="(basketinfo |async) as basket">
+             <span class="fw-bold  text-warning  mx-2">{{getcount(basket.items)}}</span>
+             
+        <i style="font-size: 25px " class="fa-solid fa-cart-shopping text-black "></i>
+          </ng-container>
+          <ng-container *ngIf="(basketinfo |async) == null">
+            <span class="fw-bold ms-2  text-black text-black">0</span>
+       <i style="font-size: 25px" class="fa-solid fa-cart-shopping text-black"></i>
+         </ng-container>
+      
+    
+        </a>
+      </div>
+
+      <div class="p-2">
+        <a routerLink="/Home" class="hovee">
+          <img  src="assets/WhatsApp Image 2023-10-04 at 2.25.05 PM.jpeg" id="imglogo"  alt="" />
+        </a>
+      </div>
+
+    <div class="d-flex p-2" style="background-color: #f3f3f3;">
+
+        <div class="">
+          <a class="">
+            <a 
+              (click)="clickMenuAndShowPage()"
+              class="text-decoration-none fw-bold text-dark  text-bold"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling"
+              aria-controls="offcanvasScrolling"
+              ><i class="fa-solid fa-bars px-1" style="font-size: 25px" ></i></a>
+            <div 
+              class="offcanvas offcanvas-start"
+              data-bs-scroll="true"
+              data-bs-backdrop="false"
+              tabindex="-1"
+              id="offcanvasScrolling"
+              aria-labelledby="offcanvasScrollingLabel">
+              <div class="offcanvas-header">
+                <div class="d-flex  align-items-center ">
+
+                  <div class="d-flex p-2" style="border-right:2px solid #ccc;" >
+                    <div class="d-flex align-items-center" >
+                      <div class="">
+                        <a (click)="switchToArabic()" style="cursor: pointer;" title="اللغه">
+                          <input
+                          type="radio"
+                          id="html"
+                          name="fav_language"
+                          value="lang1" checked
+                          style="z-index: 0; opacity: 0;"
+                        />
+                        
+                        <span class="" *ngIf="langFlag==true"><img src="assets/sa.png" class="img-ico1"/><span class="mx-2 text-warning">{{'AR'|translate}}</span></span>
+                        </a>
+                      </div>
+                      <div class="" >
+                        <a (click)="switchToEnglish()" style="cursor: pointer;" title="اللغه">
+                          <input
+                          type="radio"
+                          id="lang2"
+                          name="fav_language"
+                          value="HTML"
+                          style="z-index: 0; opacity: 0;"
+                        />
+                        <span class="mx-2" *ngIf="langFlag==false"><img src="assets/br.png" class="img-ico1" /><span class="mx-2 text-warning">EN</span></span>
+                        </a>
+                      </div>
+                     
+                    <!-- </ul> -->
+                  </div>
+               </div>
+            
+            
+              <ng-container  *ngIf="(user.CurrentUser$ |async )==null">
+             
+                <div class="hovee bg-warning p-2 mx-2">
+                  <a  style="color:#888;" (click)="closeMenuAndShowPage('/register')"   class="text-decoration-none" title="تسجيل مستخدم جديد">
+                    <i class="fas fa-user-plus fa-lg"></i>
+                  </a>
+                </div>
+              </ng-container>      
+            
+            
+                <ng-container  *ngIf="(user.CurrentUser$|async)==null">
+            
+                <div class="hovee bg-warning p-2 mx-2">
+                  <a  style="color:#888" (click)="closeMenuAndShowPage('/Login')" style="cursor: pointer;" class="text-decoration-none" title="تسجيل الدخول"><i class="fa-solid fa-right-to-bracket" style="color: #888;"></i>
+                  </a>
+                </div>
+              </ng-container>
+              <ng-container  *ngIf="(user.CurrentUser$ |async) as user">
+                <div class=" hovee bg-warning p-2 mx-2">
+                  <a style="color:#888;cursor: pointer;" (click)="Logout()" style="cursor: pointer;" class="text-decoration-none"><i class="fa-solid fa-right-from-bracket fa-rotate-180 " style="color: #888;"></i>
+                  </a>
+               </div>
+             </ng-container>
+
+
+             <ng-container *ngIf="(user.CurrentUser$ |async) as user">
+              <div class="d-flex hovee bg-warning p-2 mx-2" >
+                      <a routerLink="/UserInfo" (click)="closeMenuAndShowPage('/UserInfo')"  class="text-decoration-none text-black" style="color:#888" href="" title="بيانات المستخدم"><i class="far fa-user fa-lg"></i>
+                   </a> 
+              </div>
+            </ng-container>
+
+
+                 
+                  <div class="hovee bg-warning p-2 mx-2">
+                    <a class="hovee" style="color:#888;cursor:pointer" (click)="closeMenuAndShowPage('/WishList')" class="text-decoration-none text-black" title="المفضلة"><i class="far fa-heart fa-lg"></i>
+                  </a >
+                  </div>
+
+                  <div class="hovee bg-warning p-2 mx-2">
+                    <a class="hovee" style="color:#888;cursor:pointer" (click)="closeMenuAndShowPage('/Orders')" class="text-decoration-none text-black" title="الطلبات"><i class="fa-solid fa-eye"></i>
+                    </a >
+                  </div>
+                </div>
+                
+                <button
+                  type="button"
+                  class="btn-close btn-primary   mx-2"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="d-flex flex-column text-center" style="list-style: none; font-weight: bold;">
+
+                  <li class="">
+                    <hr class="hr" />
+                  </li>
+                  
+                  <li class="mb-3 mt-3">
+                    <a (click)="closeMenuAndShowPage('/Home')" style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'Home'|translate}}</a>
+                  </li>
+                  <li class="">
+                    <hr class="hr" />
+                  </li>
+                  <!-- <li class="mb-3 mt-3">
+                    <a routerLink="/AllProduct" (click)="closeMenuAndShowPage('/AllProduct')" style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'Products'|translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" /> -->
+                  <!-- </li> -->
+                  <li class="mb-3 mt-3"><a routerLink="/Sangan" style="cursor: pointer;" class="text-decoration-none text-dark h hover"  (click)="closeMenuAndShowPage('/Sangan')">{{'Sangan'|translate}} <span class="new-badge">{{'New'|translate}}</span></a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                  </li>
+                  <li class=" mb-3 mt-3">
+                    <a   routerLink="/Offers" (click)="closeMenuAndShowPage('/Offers')"  style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'Offers' | translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                  </li>
+                  <li class=" mb-3 mt-3">
+                    <a (click)="VeiwProductCategory(8)"  style="cursor: pointer;"  class="text-decoration-none text-dark hover hover">{{'Engine Oil and Filter Change Packages'|translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                  </li>
+                  <li class="mb-3 mt-3">
+                    <a  (click)="closeMenuAndShowPage('/AppointmentBooking')" style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'AppointmentBooking' | translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                  </li>
+                  <li class=" mb-3 mt-3">
+                    <a  (click)="closeMenuAndShowPage('/OurServices')" style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'Service'|translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                  </li>
+                  
+                  <li class=" mb-3 mt-3">
+                    <a  (click)="closeMenuAndShowPage('/AboutUs')" style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'AboutUs'|translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                 
+                  </li>
+                  <li class="mb-3 mt-3">
+                    <a  (click)="closeMenuAndShowPage('/SocailMedia')" style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'Socail Media'|translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                  </li>
+                  <li class="mb-3 mt-3">
+                    <a  (click)="closeMenuAndShowPage('/ContactUs')" style="cursor: pointer;" class="text-decoration-none text-dark hover">{{'ContactUs'|translate}}</a>
+                  </li>
+                  <li>
+                    <hr class="hr" />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div style="position: relative; height: auto;width: 100%;" class="mt-2">
+      <div class="container-fluid">   
+      <form class="">
+        <div class="row   d-flex flex-row justify-content-between align-items-center  input-group ">
+          <input
+            id="Search-input"
+            type="text"
+            class="form-control"
+            
+            placeholder="{{'Search'|translate}}"
+            aria-label="Search Store"
+            aria-describedby="basic-addon1"
+            style="background-color: #fff;vertical-align: middle;height: 45px;border-radius:20px ;border: 0; text-decoration: none;padding: 0 0 0 0;font-size: 25px;outline: #fff;text-transform: none;text-shadow: none;"
+            class="text-center col-11"
+          #inputStringgg (keyup)="filterByName(inputStringgg.value)"
+          
+            />
+          
+          <span class="col-1 ">
+            <button class="d-flex btn mx-2 ">
+              <a id="ancorsearch" href="#Search-input"
+                ><i
+                  style="color: #aaa"
+                  class="fa-solid fa-magnifying-glass"
+                ></i
+              ></a>
+            </button>
+          </span>
+       
+
+          <!-- hover of drop down menue -->
+        </div>
+      </form>
+    </div>
+
+    
+     </div>
+    
+     <ul  class="row d-flex flex-column  align-items-center" style="position: absolute;width: 100%;height:auto;z-index: 963258;">
+    
+      <ng-container *ngFor="let item of searchItems">
+        <a (click)="VeiwProduct(item)" style="cursor: pointer;">
+         <li style="z-index: 9999;background-color: #f3f3f3;color: #000;border-bottom: 1px solid #fff;" class="row d-flex flex-row justify-content-between align-items-center p-2">
+          <div class="col-3">
+            <img src={{item.images}} style="width: 100%;height: 100px;" alt="">
+          </div>
+             <div class="col-8 row d-flex flex-column  align-items-center">
+              <div class="col-12">{{item.name}}</div>
+              <div class="col-12"><span> {{'Service Code'|translate}} :</span>{{item.serviceCode}}</div>
+              
+  
+         <div class="col-12"> {{item.price}} {{'SAR inclusive of tax.' | translate}}</div>
+              
+             </div>
+               
+       </li>
+      
+      </a>  
+  
+      <li *ngIf="searchItems==null">
+        <div>
+         لا توجد خدمات بهذا الاسم
+        </div>
+      </li>
+       </ng-container>
+     </ul>
+  </nav>
+  <!-- nav2 -->
+  <!-- mobile -->
+
+
+
+
+

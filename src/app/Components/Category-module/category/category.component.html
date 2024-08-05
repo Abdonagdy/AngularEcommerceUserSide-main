@@ -1,0 +1,91 @@
+<section class="p-3" style="background-color: #fff;">
+	<div class="p-2">
+    <p class="text-center" style="font-weight: bold;">{{urldesc}}</p>
+  </div>
+</section>
+
+<div class="container-fluid" style="background-color: #f3f3f3;">
+
+    <div class="row p-3" >
+      <app-filter-aside class="d-sm-flex d-md-flex  d-lg-flex  col-lg-3 col-md-12  col-sm-12" style="max-height: 700px;"></app-filter-aside>
+
+<!--        <div class="d-sm-flex d-md-flex  d-lg-flex  flex-column col-lg-3 col-md-12  col-sm-12  bg-body-tertiary rounded" style="max-height: 400px;background-color: #fff;">
+          <div style="border-bottom:1px solid #f3f3f3 ;" class="mb-2 pt-3 pb-3">
+            <i class="fa-solid fa-list fa-2xl mx-2" style="color: #aaa;"></i>     
+                 <span class="fw-bold " >{{'CATEGORIES'}}</span>
+          </div>
+      
+          <ng-container *ngFor="let item of Allcategory" >
+
+           
+            <div class="form-check mb-3 ms-3 mx-3">    
+              
+              <div>
+                <meta name="seoname" content="{{ item.seName }}">
+            <title>{{ item.metaTitle }}</title>
+            <meta name="keywords" content="{{ item.metaKeywords }}">
+            <meta name="description" content="{{ item.metaDescription }}">
+            </div>
+            
+            
+            <div>
+              <input #cat class="form-check-input " type="radio" name="category" value="{{item.id}}" id="{{item.name}}" (change)="SendCategoryURL(item.name,item.id)" style="opacity:0 ;" >
+            </div>
+              <div *ngIf="currentLanguage == 'ar'">
+                <p style="cursor: pointer;">  <label class="form-check-label " for="{{item.name}}" style="cursor: pointer;" id="labelhover">
+                {{item.name}} 
+              </label>
+            </p>
+              </div>
+             
+             
+             
+              <div *ngIf="currentLanguage == 'en'">
+                
+                <label class="form-check-label " for="{{item.name}}" style="cursor: pointer;" id="labelhover">
+                  {{item.nameEN}}
+                  
+                  <ng-container *ngIf="item.id !=1 ">
+                 
+                    </ng-container>
+                </label>
+                
+                <p style="cursor: pointer;"> </p>
+                </div>
+    
+                
+              
+            </div>
+    
+    
+          </ng-container>
+    
+        </div>-->
+
+         
+    <section class="col-lg-9 col-md-12 col-sm-12 mt-3 mb-3">
+        <div class="container-fluid" >
+          <div class="row g-2">
+
+            <ng-container *ngFor="let item of Allcategory">
+                    <div class="col-lg-3  col-md-4  col-sm-6 mb-5" style="height: 310px;">
+                        <a (click)="oncliclink(item.name,item.id)" style="cursor: pointer;" class="text1" class="text-decoration-none">
+                        <div class="card">
+                            <div class="text-center hover2"><img src="{{item.imageURL}}" alt="Category" class="img" height="300px" />
+                            </div>
+                            <div class="text-black hover1" *ngIf="currentLanguage == 'en'">
+                                    <h2 class="text-center text1"> {{item.nameEN }}</h2>
+                            </div>
+                            <div class="text-black hover1" *ngIf="currentLanguage == 'ar'">
+                                <h2 class="text-center text1"> {{item.name}}</h2>
+                        </div>
+                     </div>
+                    </a>
+      
+                    </div>
+                
+                
+                </ng-container>
+        </div>
+      </div>
+    </section>

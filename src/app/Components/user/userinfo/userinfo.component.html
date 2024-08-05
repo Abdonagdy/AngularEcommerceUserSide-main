@@ -1,0 +1,104 @@
+<!-- <app-header></app-header> -->
+
+
+    <div class="container-fliud p-5" style="background-color: #f3f3f3;">
+       
+
+             
+      <div class="row g-4 d-flex flex-row justify-content-around align-items-center mb-5  p-2" style="background-color: #cfcfcf;" >
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/UserInfo">{{'USER INFPRMATION' |translate}}</a></div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/AdressDetails" >{{'The addresses'|translate}}</a></div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2 " style="color: black;font-size: 15px;" routerLink="/Orders" >{{'Orders'|translate}}</a></div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;" ><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/changepassword" >{{'Change PassWord' | translate}}</a>
+    
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/Reward Points" >{{"Reward Points"| translate}}</a>
+        </div>
+    </div>
+           
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-center mt-3" style="color: rgb(7, 7, 94);">{{'My account - USER INFPRMATION' |translate}}</h3>
+         
+
+<div class="container">
+  <div class="row">
+      <div class="col-12">
+        <!-- Page title -->
+        <div class="my-5">
+          
+          <hr>
+        </div>
+        <!-- Form START -->
+        <form class="file-upload" [formGroup]="RegisterForm" (ngSubmit)="EditeAccount()">
+          <div class="row mb-5 gx-5">
+            <!-- Contact detail -->
+            <div class="col-xxl-12 mb-5 mb-xxl-0">
+              <div class="bg-secondary-soft px-4 py-5 rounded">
+                <div class="row g-3">
+                  <h4 class="mb-4 mt-0"><strong >{{'Your personal information'|translate}}</strong></h4>
+             
+                    <input type="hidden" class="form-control"  id="Id" name="Id" formControlName="Id" placeholder=""  aria-label="Id" >
+                   <!-- First Name -->
+                  <div class="col-md-6">
+                    <label class="form-label" for="UserName">{{'UserName'|translate}}*</label>
+                    <input type="text" class="form-control"  id="UserName" name="UserName" formControlName="UserName" placeholder="" aria-label="UserName" >
+                  </div>
+                  <!-- First Name -->
+                  <div class="col-md-6">
+                    <label class="form-label" for="First name">{{'First Name'|translate}}*</label>
+                    <input type="text" class="form-control"  id="FirstName" name="FirstName" formControlName="FirstName" placeholder="" aria-label="First name">
+                  </div>
+                  <!-- Last name -->
+                  <div class="col-md-6">
+                    <label class="form-label" for="Last name">{{'Last Name'|translate}} *</label>
+                    <input type="text" class="form-control"   id="LastName" name="LastName" formControlName="LastName" placeholder="" aria-label="Last name" >
+                  </div>
+                  <!-- Phone number -->
+                  <div class="col-md-6">
+                    <label class="form-label" for="Phone Number">{{'Phone Number' | translate}}*</label>
+                    <input type="text" class="form-control"  id="Phone" name="Phone" formControlName="Phone" placeholder="" aria-label="Phone number">
+                  </div>
+                  <!-- Email -->
+                  <div class="col-md-6">
+                    <label for="Email" class="form-label">{{'Email'|translate}}*</label>
+                    <input type="email" class="form-control"  id="Email" name="Email" formControlName="Email" >
+                  </div>
+                </div> <!-- Row END -->
+              </div>
+            </div>
+          
+          </div> <!-- Row END -->
+          <!-- button -->
+          <div class="gap-3 d-md-flex justify-content-md-end text-center">
+            <div class="mt-2 mb-2">
+              <button type="submit" class="btn btn-primary btn-lg">{{'Update profile' |translate}}</button>
+            </div>
+            
+          </div>
+        </form> <!-- Form END -->
+      </div>
+    </div>
+    </div>
+
+        </div>
+        <!-- <div style="color: red;" class="mt-5">
+          <div class="text-center ">
+            <p>{{'Total Points' | translate}}</p>
+            <p>{{wards}} <span class="mx-2">{{'Point' | translate}}</span></p>
+              
+         </div>
+         
+         <div class="text-center ">
+           <p>{{'Points versus the riyal'|translate}}</p>
+           <p>{{wards}}</p>
+             
+        </div>
+        </div> -->
+  
+     
+</div>
+
+<!-- <app-footer></app-footer> -->
+
+
+

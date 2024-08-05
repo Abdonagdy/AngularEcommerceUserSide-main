@@ -1,0 +1,17 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+#toast-container > div {
+  opacity:1;
+}
+/* *{
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+} */
+/* font-family: 'Cairo', sans-serif;
+font-family: 'Harmattan', sans-serif; */
+
+html, body { height: 100%; background-color: #fff;}
+body { margin: 0; font-family: Arial, Helvetica, sans-serif, "Helvetica Neue",'Cairo',sans-serif,'Harmattan';}
+
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

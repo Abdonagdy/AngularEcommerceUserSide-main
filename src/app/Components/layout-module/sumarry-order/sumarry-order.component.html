@@ -1,0 +1,29 @@
+<div class="" *ngIf="(Shippingitem |async) as ShipingTotal">
+  <aside class="bg-light p-4 shadow p-3  cart rounded  mt-4">
+    <h5 class="fw-bold text-center">{{'Order Summary'|translate}} </h5>
+    <hr>
+    <div class="row">
+      <div class="col-6 fw-bold">{{'Sub-Total' | translate}}</div>
+      <div class="col-6 fw ">{{ShipingTotal.Subtotal}}<span class="mx-2">{{'SAR' | translate}}</span> </div>
+    </div>
+    <div class="row">
+      <div class="col-6 fw-bold">{{'Tax' | translate}}</div>
+      <div class="col-6 fw ">{{ShipingTotal.Subtotal - ((ShipingTotal.Subtotal*100))/115| number:'1.2-2'}}<span class="mx-2">{{'SAR' | translate}}</span> </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-6 fw-bold">{{'Shiping' | translate}}</div>
+      <div class="col-6 ">{{'Not required'| translate}}</div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-6 fw-bold">{{'Total' | translate}}</div>
+      <div class="col-6 ">{{ShipingTotal.total}}<span class="mx-2">{{'SAR' | translate}}</span></div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-6 fw-bold">{{'You Will earn' | translate}}</div>
+      <div class="col-6">{{convertToInteger((ShipingTotal.total)/10)}}<span class="mx-2">{{'Points' | translate}}</span></div>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,116 @@
+.page-title{
+    margin: 0 0 20px;
+    border-bottom: 1px dashed #e6e6e6;
+    padding: 15px 0;
+}
+.topic-password form, .topic-page .page-body, .not-found-page .page-body, .registration-result-page .page-body {
+    max-width: 900px;
+    margin: auto;
+    border: 1px solid #eee;
+    background-color: #fff;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 26px;
+}
+h1, h2, h3, h4, h5, div, button, label, input[type=button], a, li {
+    font-family: 'myFontKofi',Arial,Helvetica,sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+}
+div {
+    display: block;
+}
+@media (min-width: 768px)
+{
+.page {
+    clear: both;
+    text-align: right;
+}
+}
+.page {
+    min-height: 200px;
+    text-align: center;
+}
+body {
+    direction: rtl;
+    background-color: #f3f3f3;
+    font-family: roboto,sans-serif;
+    font-size: 12px;
+    font-weight: lighter;
+    color: #888;
+}
+html {
+    margin: 0!important;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: none;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+.page:after, .page-title:after, .page-body:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+.page-title {
+    margin: 0 0 20px;
+    border-bottom: 1px dashed #e6e6e6;
+    padding: 15px 0;
+}
+h1, h2, h3, h4, h5, div, button, label, input[type=button], a, li {
+    font-family: 'myFontKofi',Arial,Helvetica,sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+}
+div {
+    display: block;
+}
+@media (min-width: 768px)
+{
+.page {
+    clear: both;
+    text-align: right;
+}
+}
+.page {
+    min-height: 200px;
+    text-align: center;
+}
+body {
+    direction: rtl;
+    background-color: #f3f3f3;
+    font-family: roboto,sans-serif;
+    font-size: 12px;
+    font-weight: lighter;
+    color: #888;
+}
+html {
+    margin: 0!important;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: none;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+.page:after, .page-title:after, .page-body:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+*:before, *:after {
+    box-sizing: border-box;
+}

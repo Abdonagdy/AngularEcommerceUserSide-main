@@ -1,0 +1,35 @@
+<!-- <app-header></app-header> -->
+
+<section class="p-3" style="background-color: #fff;">
+	<div class="p-2">
+    <p class="text-center" style="font-weight: bold;">{{urldesc}}</p>
+  </div>
+</section>
+
+
+<div style="background-color: #f3f3f3;" class="p-5">
+  <h1 style="color: #aaa;text-align: center;">خدمات  مراكز مايز لصيانة السيارات</h1>
+  <p style="text-align:center"><strong><img src="/assets/mize-services-list.png" alt="الخدمات التي تقدمها مراكز مايز لصيانة السيارات" width="59" height="60"></strong></p>
+ <div *ngFor="let item of ServiceBranch" class="container" style="background-color: #fff;">
+  <div class="row d-flex flex-column text-center p-5">
+  
+    
+        <h2 class="mb-2" style="color: #aaa;" >{{item.braname}}</h2>
+    <div class="mb-2" *ngIf="item.imageURL !=null">
+    <img src={{item.imageURL}} width="100%" alt="صورة المركز">
+   </div>
+   <p class="mb-2" style="color: red;">{{item.phone}}</p>
+   <div *ngIf="item.location != null">
+    <p class="mb-2" style="color: orange;"><a href="{{item.location}}" class="text-decoration-none text-black" target="_blank" style="color: orange;">موقع الفرع</a></p>
+   
+   </div>
+   <h3>الخدمات </h3>
+   <ul class="mb-2" *ngFor="let i of item.branchServices">
+     <li style="list-style: none;color: black;"><h3>{{i.descrption}}</h3> </li>
+   </ul>
+ <div >
+ </div>
+  </div>
+ </div> 
+</div>
+<!-- <app-footer></app-footer> -->

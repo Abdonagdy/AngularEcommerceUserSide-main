@@ -1,0 +1,198 @@
+<body>
+  <div class="container-fluid" style="background-color: #f3f3f3;">
+  <div class="row justify-content-center">
+
+    <div class="col-xll-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 mt-3 mt-3 ">
+  <div class="mb-3 text-center">
+      <img src="assets/mizelogo2.jpeg" class="img-fluid">
+    </div>
+   <!-- ////////Form//////// -->
+<div class=" shadow p-3 mb-5 bg-body-tertiary  fw-bold" >
+<h3 class="text-center mb-2 text-danger">{{"Create New Account" |translate}}
+</h3>
+<form  [formGroup]="RegisterForm" (ngSubmit)="CreateAccount()" >
+ <!-- <h3 class="text-center">{{'Create new Account' |translate}}</h3> -->
+ <div *ngIf="invalidlogin" class="alert alert-danger">{{'this email is already used'|translate}}</div>
+
+ <div class="">
+    <label for="UserName" class="form-label">{{'User Name' |translate}}</label>
+    <div class=" ">
+      <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+      <input type="text" class="form-control " name="UserName" id="UserName" aria-describedby="inputGroupPrepend" formControlName="UserName"
+        [class.is-valid]="UserName?.valid" placeholder="{{'Enter Your UserName' |translate}}">
+      <div class="alert alert-danger " [hidden]="UserName?.valid ||UserName?.untouched">
+        <div *ngIf="UserName?.errors?.['required']">{{'Please Write UserName'|translate}}</div>
+        <div *ngIf="UserName?.errors?.['pattern']">{{'Username must be at least three letters long and should not contain (_ or @ or any other symbols).'|translate}}</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <label for="FirstName" class="form-label">{{'First Name'|translate}}</label>
+    <input type="text" class="form-control" id="FirstName" name="FirstName" formControlName="FirstName"
+      [class.is-valid]="FirstName?.valid" placeholder="{{'Enter your FirstName'|translate}}">
+    <div class="alert alert-danger"[hidden]="FirstName?.valid||FirstName?.untouched">
+      <div *ngIf="FirstName?.errors?.['required']">{{'Please enter your first name.'|translate}}</div>
+      <div *ngIf="FirstName?.errors?.['pattern']">{{'First name must be at least three letters long.'|translate}}</div>
+   </div>
+  </div>
+  <div class="">
+    <label for="LastName" class="form-label">{{'Last Name' |translate}}</label>
+    <input type="text" class="form-control" id="LastName" name="LastName"  formControlName="LastName"
+      [class.is-valid]="LastName?.valid" placeholder="{{'Enter your LastName'|translate}}">
+    <div class="alert alert-danger"[hidden]="LastName?.valid||LastName?.untouched">
+      <div *ngIf="LastName?.errors?.['required']">{{'Please enter your last name.'|translate}}</div>
+      <div *ngIf="LastName?.errors?.['pattern']">{{'Last name must be at least three letters long.'|translate}}</div>
+   </div>
+  </div>
+  <div class="">
+    <label for="Email" class="form-label">{{'Email'|translate}}</label>
+    <input type="email" class="form-control" id="Email" name="Email"  formControlName="Email"
+      [class.is-valid]="Email?.valid" placeholder="{{'Enter Your Email' |translate}}" >
+    <div class="alert alert-danger"[hidden]="Email?.valid||Email?.untouched">
+      <div *ngIf="Email?.errors?.['required']">{{'Please write Your Email'|translate}}</div>
+      <div *ngIf="Email?.errors?.['pattern']">{{'Please write valid Email (example@gmail.com)'|translate}}</div>
+   </div>
+  </div>
+
+  <div class="">
+    <label for="Phone" class="form-label">{{'Phone Number' |translate}}</label>
+    <input type="tel" class="form-control" id="Phone" name="Phone"  formControlName="Phone" [class.is-valid]="Phone?.valid" placeholder="{{'Enter your phone number'|translate}}">
+    <div class="alert alert-danger"[hidden]="Phone?.valid||Phone?.untouched">
+      <div *ngIf="Phone?.errors?.['required']">{{'Please Write Phone Number' |translate}}</div>
+      <div *ngIf="Phone?.errors?.['pattern']">{{'Please Write valid Phone Number (05xxxxxxxx)'|translate}}</div>
+   </div>
+  </div>
+
+
+
+
+
+  <!-- /////////////////password/////////////////////// -->
+  <div class="">
+    <label for="Password" class="form-label">{{'Password' |translate}}</label>
+    <input type="password" class="form-control" id="Password" name="Password"  formControlName="Password"
+     [class.is-valid]="Password?.valid" placeholder="{{'Enter your  Password'|translate}}">
+   
+   
+   
+      <div class="alert alert-danger"[hidden]="Password?.valid||Password?.untouched">
+      <div *ngIf="Password?.errors?.['required']">{{'Please Write Password' | translate}}</div>
+      <div *ngIf="Password?.errors?.['pattern']">
+      
+        <div>{{'It must contain a lowercase letter.'|translate}}</div>
+        <div>{{'It must contain a lowercase letter.'|translate}}</div>
+        <div>{{'It must contain the symbol @.'|translate}}</div>
+        <div>{{'It must contain numbers.'|translate}}</div>
+        <div>{{'The password must be at least 8 characters long.'|translate}}</div>
+    
+      </div>
+      </div>
+  </div>
+  <div class="">
+    <label for="confirmPassword" class="form-label">{{'Confirm Password'|translate}}</label>
+    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"  formControlName="confirmPassword"
+      [class.is-valid]="confirmPassword?.valid" placeholder="{{'Re-Enter your  Password'|translate}}" >
+    <div class="alert alert-danger"[hidden]="confirmPassword?.valid||confirmPassword?.untouched">
+      <div *ngIf="confirmPassword?.errors?.['required']">{{'"Please confirm your password."'|translate}}</div>
+      <!-- <div *ngIf="confirmPassword?.errors?.['minlength']">Your Last name must be more than 3 charchters</div> -->
+      <div *ngIf="confirmPassword?.errors?.['confirmPasswordValidator']">{{'The passwords do not match.'|translate}}</div>
+
+   </div>
+  </div>
+
+
+
+
+  <div class="">
+    <label for="UserReferralCode" class="form-label">{{'UserReferralCode'|translate}}</label>
+    <input type="text" class="form-control" id="UserReferralCode" name="UserReferralCode"  formControlName="UserReferralCode" placeholder="{{'Enter your  UserReferralCode'|translate}}" >
+    
+  </div>
+
+
+
+
+
+
+
+<div class="mt-3 ">
+    <button type="submit" class="btn btn-warning col-12 fw-bold" [disabled]="RegisterForm.invalid">{{'Register'|translate}}</button>
+</div>
+
+<div class="mt-3" style="font-size: .8rem;">
+  <span>
+  {{'By creating an account, you agree to Mize is  Conditions of Use and Privacy Notice.'|translate}}
+</span>
+
+<hr class="style-two">
+
+<div class="text-center">
+  <span>{{'Already have an account?' |translate}} </span>
+<span ><a routerLink="/Login" class="text-decoration-none">{{'Sign in'|translate}}</a></span>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+</div>
+
+    </div>
+
+    <hr class="style-two">
+    <div class="shadow-none p-3 mb-5 bg-body-tertiary rounded text-center">
+      <h3>{{'Mize E-comerce website made BY Mize Group'|translate}}</h3>
+      <p class="fw-bold text-body-secondary ">{{'back to' |translate}} <a routerLink="/Home" class="text-decoration-none">{{'Mize'|translate}}</a></p>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+</body>

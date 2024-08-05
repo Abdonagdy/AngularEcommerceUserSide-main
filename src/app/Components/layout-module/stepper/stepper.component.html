@@ -1,0 +1,19 @@
+<div class="container-fluid mt-5 mb-3">
+  <ul class="nav nav-pills nav-justified ">
+    <li class="nav-item" *ngFor="let step of steps;let i = index">
+      <div class="d-flex">
+        <button (click)="onclick(i)" [class.active]="selectedIndex ===i" class="nav-link text-uppercase fw-bold">
+          {{step.label}}
+        </button>
+
+      </div>
+    </li>
+  </ul>
+   <div *ngIf="selected">
+      <ng-container [ngTemplateOutlet]="selected.content"></ng-container>
+
+    </div >
+</div>
+
+
+

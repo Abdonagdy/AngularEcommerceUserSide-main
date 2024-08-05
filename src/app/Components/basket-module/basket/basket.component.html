@@ -1,0 +1,263 @@
+
+<section class="container-fluid text-center  mt-5 mb-2" style="border-bottom: 2px dotted #f3f3f3;width: 90%;">
+  <h1 style="color: #aaa; ">{{'SHOPPING CART' |translate}}</h1>
+  
+</section>
+
+<section class="container-fluid   mb-3" style="width: 90%;background-color: #f3f3f3;">
+
+
+
+  <section class="container" *ngIf="(basketitem |async) as basket">
+    
+    <section class="row d-flex flex-row justify-content-around">        
+      <table class="table table-striped table-hover  tt col-sm-12 mt-3">
+        <thead>
+          <tr class="text-center">
+            <th scope="row" style="width: 20%;">{{'Product Image'|translate}}</th>
+            <th scope="row">{{'Product Name'|translate}}</th>
+            <th scope="row">{{'Quantity'|translate}}</th>
+            <th scope="row">{{'Price'|translate}}</th>
+            <th scope="row">{{'Actions'|translate}}</th>
+          </tr>
+        </thead>
+        <ng-container *ngFor="let item of basket.items">
+            <tr class="text-center">
+              <td class="text-center">
+                <img src="{{item.image}}" style="max-width: 100%; max-height: 100px;" class="img-fluid">
+              </td>
+              <td>
+                <p *ngIf="currentLanguage=='en'">{{item.nameEN}}</p>
+                <p *ngIf="currentLanguage=='ar'">{{item.name}}</p>
+              </td>     
+              <td class="text-center">
+                <ng-container *ngIf="item.id != 4">
+                  <section class="d-flex flex-row justify-content-center align-items-center">
+                    <section class="col-3 p-2" style="background-color: #ffc107;">
+                      <a class="clik"><i class="fa-solid fa-plus" (click)="inccrementitem(item)"></i></a>
+                    </section>
+                    <section class="col-3 p-2" style="background-color: #ffc107;">
+                      <a class="fw-bold text-decoration-none text-black">{{item.quantity}}</a>
+                    </section>
+                    <section class="col-3 p-2" style="background-color: #ffc107;">
+                      <a class="clik" [hidden]="item.quantity > item.quantity"><i class="fa-solid fa-minus" (click)="removeitem(item.id, 1)"></i></a>
+                    </section>
+                  </section>
+                </ng-container>
+                <ng-container *ngIf="item.id == 4">
+                  <p class="fw-bold">{{item.quantity}}</p>
+                </ng-container>
+              </td>
+              <td class="text-center">{{item.price}}<span class="mx-2">{{'SAR inclusive of tax.'|translate}}</span></td>
+              <td class="text-center">
+                <a class="text-decoration-none">
+                  <a class="clik"><i class="fa-solid fa-trash-can" style="color: red;" (click)="removeitem(item.id, item.quantity)"></i></a>
+                </a>
+              </td>
+            </tr>
+        </ng-container>
+      </table>
+
+      
+    <!-- الدفع -->
+    <section class="col-lg-4 col-md-12 col-sm-12 mb-5 mt-4 bb" >
+       <app-sumarry-order ></app-sumarry-order>
+    <section class="d-grid mt-1 mb-5 bg-light p-4 shadow p-3  cart rounded  mt-4 " *ngIf="(basketitem |async)">
+      <label class="mb-2 fw-bold text-warning">
+        <input type="radio"   #radioOption1 [(ngModel)]="isChecked" name="yourRadioGroup" />
+    {{'I agree to the terms of service and commit to them unconditionally.'|translate}}
+      </label>
+    <!-- Button trigger modal -->
+    <section class="text-center">
+      <button type="button" class="btn btn-success mb-2 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        {{'Reading the terms and conditions.'|translate}}
+      </button>
+      
+    </section>
+    <section class="text-center">
+      <button  type="button"  (click)="checkRadioButton()"  class="btn btn-warning text-white fw-bold p-3">{{'Pay'|translate}}</button>
+    </section>
+    </section>
+
+        <!-- Modal -->
+        <section class="modal modal-lg  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content text-center">
+              <div class="modal-header text-center p-5">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{'Terms and Conditions'|translate}}</h1>
+              </div>
+              <div class="modal-body">
+                <div style="background-color: #fff;" class="p-5" >
+  
+                  <div class="master-column-wrapper">
+                      <div class="center-1">
+                          <div class="page topic-page" id="ph-topic">
+                              <div class="page-title" id="ph-title">
+                                  <h1 style="color: #000;">شروط الإستخدام</h1>
+                              </div>
+                              <div class="page-body">
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                      ><span dir="RTL" lang="AR-SA" style="font-size:15pt">عميلنا العزيز:</span></p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                      ><span dir="RTL" lang="AR-SA" style="font-size:15pt">نشكر لك زيارتك لمتجر مايز لصيانة
+                                          السيارات.</span></p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                    ><span dir="RTL" lang="AR-SA" style="font-size:15pt">قبل كل شيء نرجو التكرم بالإطلاع
+                                          على سياسة الإرجاع على هذا الرابط</span></p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                    >
+                                    <!-- <span dir="RTL" lang="AR-SA" style="font-size:15pt;color:#f00"><a
+                                              href="https://mize.com.sa/shipping-returns" target="_blank" rel="noopener"><span
+                                                  style="color:#f00">سياسة الإرجاع</span></a></span></p> -->
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                      ><span style="font-size:15pt"><span dir="RTL" lang="AR-SA">هذه الشروط والأحكام توفر
+                                              الحماية لنا ولعملائنا الكرام ولأي زائر يستخدم هذا الموقع. الرجاء قراءة الشروط التالية بعناية
+                                              قبل استخدام الموقع. يوافق المستخدم على أن الوصول إلى الموقع واستخدامه يخضع للشروط والأحكام
+                                              أدناه. إذا كان لديك اعتراض على أحد هذه البنود فنرجو منك التواصل معنا قبل إتمام عملية الشراء،
+                                              ويحتفظ مايز لصيانة السيارات بالحق في تغيير أجزاء من شروط الاستخدام والأحكام أو تعديلها أو
+                                              إضافة البعض منها أو إزالتها في أي وقت من الأوقات. وتصبح التغييرات سارية المفعول عندما يتم
+                                              نشرها على الموقع من دون سابق إنذار. لذلك، يرجى مراجعة شروط الاستخدام والأحكام بشكل منتظم
+                                              لمعرفة كل التحديثات. حيث يشكل استخدامك المستمر للموقع موافقتك على كل التغييرات التي يجري
+                                              إحداثها على الشروط والأحكام</span>.</span></p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                    ><span dir="RTL" lang="AR-SA" style="font-size:15pt">العلامات التجارية وحق النشر</span>
+                                  </p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                    ><span style="font-size:15pt"><span dir="RTL" lang="AR-SA">إن جميع حقوق الملكية
+                                              الفكرية، سواء كانت مسجلة أو غير مسجلة في الموقع، وكافة المعلومات والتصاميم الواردة على
+                                              الموقع تعتبر ملكا لشركة منيف عامر النهدي التجارية المسجلة في المملكة العربية السعودية، مدينة
+                                              جدة&nbsp;برقم (<span dir="RTL" lang="AR-SA" style="color:#404040">4030324524</span>)، وإن كل
+                                              محتويات الموقع محمية أيضا بموجب حقوق النشر كونها عمل جماعي يخضع لقوانين حقوق نشر المملكة
+                                              العربية السعودية والاتفاقيات الدولية. جميع حقوق النشر محفوظة</span>.</span></p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                    ><span dir="RTL" lang="AR-SA" style="font-size:15pt">أخطاء مطبعية</span></p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                    ><span style="font-size:15pt"><span dir="RTL" lang="AR-SA">في حال أن منتج أو خدمة في
+                                              متجر مايز لصيانة السيارات تم سرده عن طريق الخطأ بسعر غير صحيح، متجر مايز لصيانة السيارات
+                                              يحتفظ لنفسه بالحق في رفض أو إلغاء أي طلب موضوع للمنتج المسجل بسعر غير صحيح. متجر مايز لصيانة
+                                              السيارات يحتفظ لنفسه بالحق في رفض أو إلغاء أي أوامر من هذا القبيل سواء تم أو لم يتم تأكيد
+                                              الطلب وبطاقة الائتمان الخاصة بك مشحونة. إذا كان بالفعل بطاقة الائتمان الخاصة بك قد تم شحنها
+                                              للشراء وتم إلغاء الطلب الخاص بك،&nbsp;<span style="font-size:15pt"><span dir="RTL"
+                                                      lang="AR-SA">متجر مايز لصيانة السيارات</span></span> سيصدر ائتمان إلى حساب بطاقة
+                                              الائتمان الخاصة بك أو يطلب منك معلومات حسابك البنكي في قيمة السعر الخطأ</span>.</span></p>
+                                  <p style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+                                      ><span dir="RTL" lang="AR-SA" style="font-size:15pt">إشعار</span></p>
+                                  <p
+                                      style="color:#000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:15pt;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0;text-transform:none;white-space:normal;widows:2;word-spacing:0;-webkit-text-stroke-width:0;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">
+                                      <span dir="RTL" lang="AR-SA" style="font-size:15pt"><span style="font-size:15pt"><span dir="RTL"
+                                                  lang="AR-SA">متجر مايز لصيانة السيارات</span></span>&nbsp;قد يرسل إخطار إليك
+                                          عن طريق البريد الإلكتروني او بالرسائل النصية أو إشعار عام على الموقع، أو بطريقة أخرى موثوق بها
+                                          إلى العنوان الذي وفرته لمتجر <span style="font-size:15pt"><span dir="RTL" lang="AR-SA">مايز
+                                                  لصيانة السيارات</span></span></span></p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  </div>
+                  
+  
+              </div>
+              <div class="modal-footer text-center">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </section>
+  
+  
+  
+  
+  
+  
+          <section id="multiCollapseExample1" class="collapse">
+  
+          
+          </section>
+  
+          <section *ngIf="isChecked===false">
+            <!-- Content to show when the radio button is checked -->
+            <h3 class="text-warning">{{'Please accept the terms and conditions before proceeding to the next step.'|translate}}
+            </h3>
+          </section>  
+  </section>
+
+
+
+     
+    </section>
+  
+ 
+
+
+</section>
+ 
+    <section class="p-5"  *ngIf="(basketitem |async) ==null">
+      <section class="p-5" style="background-color: #f3f3f3;">
+      <section class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5" >
+        
+        <section>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M528.1 301.3l47.3-208C578.8 78.3 567.4 64 552 64H159.2l-9.2-44.8C147.8 8 137.9 0 126.5 0H24C10.7 0 0 10.7 0 24v16c0 13.3 10.7 24 24 24h69.9l70.2 343.4C147.3 417.1 136 435.2 136 456c0 30.9 25.1 56 56 56s56-25.1 56-56c0-15.7-6.4-29.8-16.8-40h209.6C430.4 426.2 424 440.3 424 456c0 30.9 25.1 56 56 56s56-25.1 56-56c0-22.2-12.9-41.3-31.6-50.4l5.5-24.3c3.4-15-8-29.3-23.4-29.3H218.1l-6.5-32h293.1c11.2 0 20.9-7.8 23.4-18.7z"/></svg>
+          </span>
+        </section>
+        <section class="mt-3 mb-3">
+          {{'Your cart is empty.'|translate}}
+        </section>
+        <section>
+          {{"You haven't added any service yet. Please continue shopping."|translate}}
+        </section>
+        <section class="mt-3 mb-3">
+          <a routerLink="/Home" class="btn btn-warning">{{"Continue shopping"|translate}}</a>
+        </section>
+      </section>
+      </section>
+    </section>
+
+
+      <!-- كود الخصم -->
+<section class="container-fluid p-5">
+<section class="row text-center">
+  <section class="d-flex flex-column justify-content-center align-items-center">
+  <h2 class="col-lg-4 col-md-6 col-sm-12">{{'Apply the code to get the discount.'|translate}}</h2>
+<form  [formGroup]="ApplyCodeForm" (submit)="applyCoupon()" class=" col-lg-4 col-md-6 col-sm-12">
+<section  class=" form-group">
+<span class="form-label  mb-3">{{'The coupon'|translate}}</span>
+<input class="form-control  mb-3 text-center"   type="text"    name="Code" id="Code" formControlName="Code"  [class.is-valid]="Code?.valid" placeholder="ادخل الكوبون هنا ..." >
+<section>
+  {{total}}
+</section>
+<section class="alert alert-danger " [hidden]="Code?.valid ||Code?.untouched">
+<section *ngIf="Code?.errors?.['required']">{{"Please enter the coupon code."|translate}}</section>
+<!-- <div *ngIf="Code?.errors?.['pattern']">username must be more than 3 charchters</div> -->
+
+</section>
+</section>
+<button type="submit" class="btn btn-warning">{{'Apply'|translate}}</button>
+</form>
+</section>
+</section>
+</section>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

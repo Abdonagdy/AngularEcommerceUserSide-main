@@ -1,0 +1,38 @@
+<div class="container-fliud p-5" style="background-color: #f3f3f3;">
+       
+
+             
+    <div class="row g-4 d-flex flex-row justify-content-around align-items-center mb-5  p-2" style="background-color: #cfcfcf;" >
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/UserInfo">{{'USER INFPRMATION' |translate}}</a></div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/AdressDetails" >{{'The addresses'|translate}}</a></div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2 " style="color: black;font-size: 15px;" routerLink="/Orders" >{{'Orders'|translate}}</a></div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;" ><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/changepassword" >{{'Change PassWord' | translate}}</a>
+    
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/Reward Points" >{{"Reward Points"| translate}}</a>
+        </div>
+    </div>
+    
+
+  <section class="p-5" style="background-color: #fff;">
+    <p class="text-center">{{"Dear"|translate}} {{UserName}} </p>
+    <div style="color: red;" class="mt-5">
+        <div class="text-center ">
+          <p>{{'Total Points' | translate}}</p>
+          <p>{{wards}} <span class="mx-2">{{'Point' | translate}}</span></p>
+            
+       </div>
+       
+       <div class="text-center ">
+         <p>{{'Points versus the riyal'|translate}}</p>
+         <p>{{wards}}</p>
+           
+      </div>
+      </div>
+
+  </section>
+    
+
+
+
+    </div>

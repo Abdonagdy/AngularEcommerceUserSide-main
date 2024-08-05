@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+<div id="myPaypalButtons">
+
+</div>
+
+  </div>
+
+</div>
+<div class="d-flex justify-content-between flex-row mt-3 mb-5">
+  <button type="button" class="btn btn-primary" cdkStepperPrevious><i class="fa fa-angle-left me-2"></i>{{'Back' | translate}}</button>
+  <button type="button" class="btn btn-success" (click)="CreatOrder()">{{'Order confirmation' | translate}}</button>
+</div>
+<script src="https://js.braintreegateway.com/web/3.92.1/js/paypal-checkout.min.js"></script>

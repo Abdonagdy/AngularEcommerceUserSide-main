@@ -1,0 +1,71 @@
+<!-- <app-header></app-header> -->
+
+
+<div class="container-fluid p-5" style="background-color: #f3f3f3;">
+
+  
+  <div class="row g-4 d-flex flex-row justify-content-around align-items-center mb-5  p-2" style="background-color: #cfcfcf;" >
+    <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/UserInfo">{{'USER INFPRMATION' |translate}}</a></div>
+    <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/AdressDetails" >{{'The addresses'|translate}}</a></div>
+    <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2 " style="color: black;font-size: 15px;" routerLink="/Orders" >{{'Orders'|translate}}</a></div>
+    <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;" ><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/changepassword" >{{'Change PassWord' | translate}}</a>
+
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/Reward Points" >{{"Reward Points"| translate}}</a>
+    </div>
+</div>
+
+
+   <div class="row">
+    <h1 class="text-center">{{'The addresses'|translate}}</h1>
+    <div *ngIf="islenght==false"  class="text-center text-bold p-5 " style="background-color: white;"> <h3>{{'No addresses added yet' | translate}} </h3></div>
+     
+<ng-container *ngFor="let item of AllAdrees" >
+<div class="col-lg-6 col-md-12 col-sm-12 text-center " >    
+     <div class="text-center">
+         
+         <div class="page-body">
+             <table class="table table-striped table-bordered  table-hover">
+                 <tbody>
+                   <tr>
+                     <th scope="row">{{'First Name'|translate}}</th>
+                     <td>{{item.fanme}}</td>
+                   </tr>
+                   <tr>
+                     <th scope="row">{{'Last Name'|translate}}</th>
+                     <td>{{item.lanme}}</td>
+                   </tr>
+                   <tr>
+                     <th scope="row">{{'Email' | translate}}</th>
+                     <td>{{item.phone}}</td>
+                   </tr>
+                   <tr>
+                    <th scope="row">{{'Phone Number'|translate}}</th>
+                    <td>{{item.email}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{'Country'|translate}}</th>
+                    <td>{{item.country}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{'City'|translate}}</th>
+                    <td>{{item.city}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{'region'|translate}}</th>
+                    <td>{{item.region}}</td>
+                  </tr>
+                  <tr>
+                    <th colspan="2"><button class="btn btn-danger" (click)="onDelete(item.id)">{{'Delete' |translate}}</button></th>
+                  </tr>
+                 </tbody>
+               </table>
+               
+               
+         </div>
+     </div>
+ </div>
+</ng-container>
+</div> 
+</div>
+<!-- <app-footer></app-footer> -->

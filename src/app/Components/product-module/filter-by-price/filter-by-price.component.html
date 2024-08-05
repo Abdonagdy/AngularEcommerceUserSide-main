@@ -1,0 +1,98 @@
+<section class="p-3" style="background-color: #fff;">
+</section>
+<section class="container-fluid">
+
+    <section class="row d-sm-flex justify-content-sm-center  p-3" style="background-color: #f3f3f3;">
+      <app-filter-aside class="d-sm-flex d-md-flex  d-lg-flex  col-lg-3 col-md-8  col-sm-8" style="max-height: 700px;"></app-filter-aside>
+  
+      <section class="col-lg-9 col-md-12 col-sm-12 ">
+        <section class="container-fluid" >
+          <section class="row">
+            <ng-container *ngFor="let item of productByCategory | paginate
+            : {
+                id:'filter-by-price',
+                itemsPerPage:20,
+                currentPage: page,
+                totalItems: totalLength
+              }; ">
+  
+            <ng-container *ngIf="item.name !='صيانة عامة'">
+
+            <section class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6" >
+              <section class="card shadow-sm  mt-1 mb-2" style="height: 305px;">
+                <section class="card-body  align-items-center">
+                              <section class="">
+                                
+                                
+                                <a (click)="VeiwProduct(item)" style="cursor: pointer;">
+                                  <section>
+                                <section class="text-center">
+                                                     
+                      <section class="d-flex justify-content-center align-items-center ch-col-name text-center mb-2" *ngIf="currentLanguage == 'en'" style="max-height: 30px;">
+                        {{item.nameEN}}
+                      </section>
+                      <section class="d-flex justify-content-center align-items-center ch-col-name text-center mb-2" *ngIf="currentLanguage == 'ar'" style="max-height: 30px;">
+                        {{item.name}}
+                      </section>
+ 
+                                  <section style="height: 150px;">
+                                    <img src="{{item.images}}"  style="max-height: 150px;width: 100%;"   #img />
+                              </section>
+                              </section>
+                              <section class="fw-bold d-flex justify-content-center align-items-center">
+            
+                              <section class="fw-bold d-flex mt-3 mb-3 ch-col-name">
+                                
+                              <p class="card-text">
+                                
+                                  {{item.price|currencyLocalized}} {{'incl tax'|translate}}
+                                  <!-- <ng-container *ngFor="let item1 of item.categoriesNames">
+                                  <ng-container *ngIf="item1 !=8 && item1 !=1">
+                                  <del>{{'Instead of' | translate}} {{item.oldPrice|currencyLocalized}} {{'incl tax'|translate}}</del>
+                                  </ng-container>
+                                </ng-container> -->
+                                </p>
+                              </section>
+                            </section>
+                                  </section>
+                                </a>
+                                <section class="d-flex justify-content-between ">
+                                  <section class="btn-group">
+                                    <button type="button" (click)="VeiwProduct(item)" class="btn btn-sm  card__buy">
+                                      {{'Details' | translate}}
+                                    </button>
+            
+                                  </section>
+                                  <section class="card__buy" (click)="AddProductToBasket(item)">
+                                    <i class="fas fa-shopping-cart" ></i>
+                                    </section>
+                                    <section class="card__buy" (click)="AddProductToWishlist(item.id)">
+                                      <i class="fas fa-heart text-muted p-md-1 my-1 me-0" data-mdb-toggle="tooltip" data-mdb-placement="top"
+                                      title="I like it"></i>
+                                      
+                                      </section>
+                                </section>
+                              </section>
+                            </section>
+                          </section>
+                        </section>
+            </ng-container>
+            </ng-container>
+          
+            <pagination-controls
+            class="text-center my-pagination text-bold"
+            id="filter-by-price"
+            (pageChange)="page = $event"
+            screenReaderPageLabel="page"
+            screenReaderCurrentLabel="You're on page"
+            style="color: #fac215; width: 100%; height: 70px"
+          >
+          </pagination-controls>
+  
+  
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+  

@@ -1,0 +1,81 @@
+<section class="container-fliud p-5" style="background-color: #f3f3f3;">
+
+  <section class="row g-4 d-flex flex-row justify-content-around align-items-center mb-5  p-2" style="background-color: #cfcfcf;" >
+    <section class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/UserInfo">{{'USER INFPRMATION' |translate}}</a></section>
+    <section class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/AdressDetails" >{{'The addresses'|translate}}</a></section>
+    <section class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class="text-decoration-none p-2 " style="color: black;font-size: 15px;" routerLink="/Orders" >{{'Orders'|translate}}</a></section>
+    <section class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;" ><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/changepassword" >{{'Change PassWord' | translate}}</a>
+
+    </section>
+    <section class="col-lg-2 col-md-4 col-sm-12 p-2 text-center mb-2 mt-3 hover" style="background-color: #fff;"><a class=" text-decoration-none p-2" style="color: black;font-size: 15px;" routerLink="/Reward Points" >{{"Reward Points"| translate}}</a>
+    </section>
+</section>
+
+
+  <section *ngIf="isregistred==false || islenght==false"  class="text-center text-bold p-5 " style="background-color: white;"> <h3>{{'No orders yet.' | translate}} </h3></section>
+
+  <section *ngIf="isregistred==true && islenght==true" class="row mb-5 mt-5  fw-bold shadow bg-light p-3 mb-5">
+
+    <section   class="fs-1  shadow p-3 mb-5 text-white bg-warning rounded  mt-4  m text-center ">
+    {{'All Orders' | translate}}
+
+    </section>
+    <section class="fs-5 fw-bold mb-3 text-center">
+      <p class="text-warning-emphasis">{{user1.username}}</p>
+      {{'Here you can see all your orders.' | translate}}
+    </section>
+    <table class="table table-bordered table-striped   table-hover  text-center" >
+
+
+      <thead>
+        <tr>
+          <th scope="col-6">{{'Number' | translate}}</th>
+          <th scope="col-2">{{'Date' | translate}}</th>
+          <th scope="col-2">{{'Total' | translate}}</th>
+          <th scope="col-2">{{'Staus' | translate}}</th>
+          <th scope="col-2">{{'Details' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let order of OrderDetails;let i = index" >
+        <tr>
+          <th >
+            {{i+1}}
+          </th>
+          <td class="col-3">
+            <div class="">
+              {{order.date | date : 'yyyy-MM-dd'}}
+            </div>
+
+           </td>
+          <td class="col-3">{{order.total}} {{'SAR' |translate}}</td>
+          <td class="col-3 text-success-emphasis " >{{order.status }}</td>
+           <td class="clik">
+          <a (click)="OderId(order.id)" class="fw-bold text-decoration-none ">{{'Details' | translate}}</a>
+
+           </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+
+  </section>
+
+  <br>
+  <b>
+
+  </b>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+</section>
+

@@ -1,0 +1,277 @@
+<section class="p-3" style="background-color: #fff;">
+	<div class="p-2">
+    <p class="text-center" style="font-weight: bold;">{{urldesc}}</p>
+  </div>
+</section>
+
+<section class="container-fluid p-5" style="background-color: #f3f3f3 !important;">
+
+
+	<section class="row d-flex flex-column align-items-center p-5 bgcolor" style="background-color: #fff;border: 2px solid #fff;border-radius: 5px;">
+		<section class="text-center p-4" style="background-color: #ffe38f;width: 70%;">
+			<p style="color: #aaa;font-size: 15px;">{{'Booking a maintenance appointment at Mize Car Service Centers.'|translate}}</p>
+		  <p style="color: #aaa;font-size: 15px;">{{'Through this page, you can search for an available appointment at one of our centers, and you will receive a text message once the booking is confirmed.' |translate}}</p>
+		  <p style="color: red;font-size: 15px;">{{'Please note that appointments do not include an engine oil change service.'|translate}}</p>
+		  <p style="color: red;font-size: 15px;">{{'If no available appointments are found, please contact our customer service at 0558023145.'|translate}}</p>
+		  <p style="color: red;font-size: 15px;">{{'From Sunday to Thursday, from 08:00 AM to 04:00 PM.'|translate}}</p>
+	  
+		  <section class="text-center mt-5">
+			  <p style="color: red;font-size: 15px;">{{'Dear Customer, please check the available appointments.'|translate}}</p>
+			  <button type="button" class="btn btn-success mb-2 mt-2 p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			   {{'The available appointments.'|translate}}
+			  </button>
+			  </section>
+		 </section>
+			  
+		  
+		  
+		  <!-- Modal -->
+		  <section class="modal modal-lg  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <section class="modal-dialog modal-dialog-scrollable">
+			<section class="modal-content text-center">
+			  <section class="modal-header text-center p-5">
+				<h3 class="modal-title" id="exampleModalLabel">{{'The available appointments.'|translate}}</h3>
+			  </section>
+			  <section class="modal-body">
+				<section style="background-color: #fff;" class="p-5" >
+		  
+				  <section class="master-column-wrapper">
+					  <section class="center-1">
+						  <section class="page topic-page" id="ph-topic">
+							  <section class="page-title" id="ph-title">
+								  <!-- <h1 style="color: #000;">شروط الإستخدام</h1> -->
+							  </section>
+							  <section class="page-body">
+								  <ng-container *ngFor="let item of AllBranshs;">
+									  <ng-container *ngIf="item !== AllBranshs[0]">
+										  <h3>{{item.braname}}</h3>
+								  <table class="table table-success table-striped active">
+									  <thead>
+										<tr>
+										  <th scope="col">{{'The appointment'|translate}}</th>
+										  <th scope="col">{{'Date' |translate}}</th>
+										  <th scope="col">{{'The type of maintenance.'|translate}}</th>
+										</tr>
+									  </thead>
+									  <tbody>
+										<tr *ngFor="let appointment of item.appointmentReversions">
+										  <ng-container *ngIf="appointment.isav==true">
+										  <td>{{appointment.tofromHours}}</td>
+										  <td>{{appointment.date}}</td>
+										  <td>{{appointment.maintaence}}</td>
+										  </ng-container>
+										</tr> 
+									  </tbody>
+									</table>
+									  </ng-container>
+								  </ng-container>
+							  </section>
+						  </section>
+					  </section>
+				  </section>
+				  
+				  </section>
+				  
+		  
+			  </section>
+			  <section class="modal-footer text-center">
+				<button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+			  </section>
+			</section>
+		  </section>
+		  </section>
+
+		  
+          	<!--Form-->
+	
+			  
+				<section class="row mt-5" style="width: 70%;">
+					<section class="booking-form">
+						<section class="form-header text-center">
+							<h3 style="font-size: 15px;font-weight: bolder;" class="text-cente">{{'Book your appointment'|translate}}</h3>
+						</section>
+						<form [formGroup]="RegisterForm" (ngSubmit)="CreateReservation()">
+							
+								
+								<section class="row d-flex flex-row justify-content-between ">
+									<section class="col-lg-4 col-md-5 col-sm-12 ">
+										<section class="form-group d-flex flex-column">
+											<section class="d-flex flex-row">
+												<span style="color: red !important; display: inline; float: none;">*</span><span class="form-label">{{'User Name'|translate}}</span>
+										
+											</section>
+											<input class="p-2" style="border-radius: 5px;"  type="text"    name="UserName" id="UserName" autocomplete="additional-name" formControlName="UserName"  [class.is-valid]="UserName?.valid" placeholder="{{'Enter Your UserName' |translate}}"  >
+											<section class="alert alert-danger " [hidden]="UserName?.valid ||UserName?.untouched">
+												<section *ngIf="UserName?.errors?.['required']">{{'Username must be at least three letters long and should not contain (_ or @ or any other symbols).'|translate}}</section>
+												<section *ngIf="UserName?.errors?.['pattern']">{{''|translate}}</section>
+										
+											  </section>
+										</section>
+									</section>
+	
+									<section class="col-lg-4 col-md-5 col-sm-12">
+										<section class="form-group d-flex flex-column">
+
+											<section class="d-flex flex-row">
+												<span style="color: red !important; display: inline; float: none;">*</span><span class="form-label">{{'Email'|translate}}</span>
+											</section>
+											<input class="p-2" style="border-radius: 5px;" type="email"  name="Email" id="Email" autocomplete="additional-name" formControlName="Email"  [class.is-valid]="Email?.valid"   placeholder="{{'Enter Your Email' |translate}}"  >
+											<section class="alert alert-danger " [hidden]="Email?.valid ||Email?.untouched">
+												<section *ngIf="Email?.errors?.['required']">{{'Please write Your Email'|translate}}</section>
+												<section *ngIf="Email?.errors?.['pattern']">{{'Please write valid Email (example@gmail.com)'|translate}}</section>
+										
+											  </section>
+										</section>
+									</section>
+								</section>
+							
+
+
+							<section class="row d-flex flex-row justify-content-between">
+								
+								<section class="col-lg-4 col-md-5 col-sm-12">
+									<section class="form-group d-flex flex-column">
+										<section>
+											<span style="color: red !important; display: inline; float: none;">*</span><span class="form-label">{{'Phone Number' |translate}}</span>
+										</section>
+										<input class="p-2" style="border-radius: 5px;" type="tel"   name="PhoneNumber" id="PhoneNumber" formControlName="PhoneNumber"  [class.is-valid]="PhoneNumber?.valid"   placeholder="Enter your Phone" placeholder="{{'Enter your phone number'|translate}}"  >
+										<section class="alert alert-danger " [hidden]="PhoneNumber?.valid ||PhoneNumber?.untouched">
+											<section *ngIf="PhoneNumber?.errors?.['required']">{{'Please Write Phone Number' |translate}}</section>
+											<section *ngIf="PhoneNumber?.errors?.['pattern']">{{'Please Write valid Phone Number (05xxxxxxxx)'|translate}}</section>
+									
+										  </section>
+									</section>	
+								</section>
+								
+								
+								
+									<section class="col-lg-4 col-md-5 col-sm-12">
+
+										<section class="form-group d-flex flex-column">
+											   <section class="d-flex flex-row">
+												<span style="color: red !important; display: inline; float: none;">*</span><label class="text-black" for="se">{{'Please Select Branch' | translate}}</label>
+												</section>	 
+												<select class="p-2" style="border-radius: 5px;" required    name="se"  id="se"  formControlName="se"
+														 [class.is-valid]="se?.valid"  #selectElem (change)="onSelectChange($event.target)">
+									
+													<option *ngFor="let item of AllBranshs" [value]="item.brannum" [disabled]="item === AllBranshs[0]">
+														<ng-container *ngIf="item === AllBranshs[0]">
+															{{'Please Select Branch' | translate}}
+														</ng-container>
+														<ng-container *ngIf="item !== AllBranshs[0]">
+															{{item.braname}}
+														  </ng-container>
+												   </option>
+										</select>
+										</section>
+									
+							<section class="alert alert-danger"[hidden]="se?.valid||se?.untouched">
+								<section *ngIf="se?.errors?.['required']">{{'Please Select Branch' | translate}}</section>
+								<!-- <div *ngIf="se?.errors?.['pattern']">Your Last name must be more than 3 charchters</div> -->
+							 </section>
+									</section>			
+	
+							</section>
+
+
+                             <section class="row d-flex flex-row justify-content-between ">
+								
+							        <section class="col-lg-4 col-md-5 col-sm-12">
+
+                                   <section class="form-group d-flex flex-column">
+									   <section class="d-flex flex-row">
+										<span style="color: red !important; display: inline; float: none;">*</span><label class="text-black" for="Maintaence">{{'Choose the type of maintenance.'|translate}}</label>
+									   </section>	
+										<select class="p-2" style="border-radius: 5px;" required    name="Maintaence"  id="Maintaence"  formControlName="Maintaence"
+										[class.is-valid]="Maintaence?.valid">
+										   <option [value]="0" disabled>{{'Choose the type of maintenance.'|translate}}</option>
+													   <!-- <option  value="صيانة دورية">{{'Regular maintenance'|translate}}</option>
+													   <option value="صيانة عامة">{{'General maintenance'|translate}}</option>
+													   <option value="كشف">{{'Inspection maintenance'|translate}}</option>
+													   <option value="كهرباء وابريد">{{'Electrical and cooling maintenance'|translate}}</option> -->
+													   <option value="صيانة / كشف">صيانة / كشف</option>
+													   <option value="تغيير زيت وفلتر">تغيير زيت وفلتر</option>
+			   
+										   </select>
+										   <section class="alert alert-danger"[hidden]="Maintaence?.valid||Maintaence?.untouched">
+											   <div *ngIf="Maintaence?.errors?.['required']">{{'Choose the type of maintenance.'|translate}}</div>
+											   <!-- <div *ngIf="Maintaence?.errors?.['pattern']">Your Last name must be more than 3 charchters</div> -->
+											</section>
+
+								   </section>
+
+								
+									</section>			
+			
+								
+		
+							
+									<section class="col-lg-4 col-md-5 col-sm-12">
+										<section class="form-group d-flex flex-column">
+											<section class="d-flex flex-row">
+												<span style="color: red !important; display: inline; float: none;">*</span><span class="form-label">{{'Choose the day'|translate}}</span>
+											</section>
+											<input class="p-2" style="border-radius: 5px;padding: 7px;" type="date" id="date"   name="date" formControlName="date"  class="form-control" [class.is-valid]="date?.valid" (input)="checkAppoinment()"  [min]="currentDate">
+											<section class="alert alert-danger"[hidden]="date?.valid||date?.untouched">
+												<section *ngIf="date?.errors?.['required']">{{'Please select day'|translate}}</section>
+												<!-- <div *ngIf="date?.errors?.['pattern']">Please select day</div> -->
+											 </section>
+										</section>
+										
+									</section>
+								
+							
+								
+							 </section>
+						
+						
+						
+
+
+										<section class="form-group d-flex flex-row justify-content-around align-items-center mt-3 mb-3">
+											<section>
+												<label class="text-white mb-3" for="se" >{{'The appointments'|translate}}</label>
+											</section>
+												
+												<ng-container *ngFor="let item of Allres">
+												
+													<span  [ngStyle]="{'display':item.isav == false ?'none':'inline-block'}" 
+													style="background-color: #ffcb2f;" class="p-3 mx-3 font-weight-bold mb-2 text-white text-center">
+													<input type="radio" style="border-radius: 5px;" id="{{item.tofromHours}}" name="radio1" value={{item.id}}  
+													formControlName="radio1" [class.is-valid]="radio1?.valid" >
+													{{item.tofromHours}}</span>
+												</ng-container>
+
+												<section class="alert alert-danger"[hidden]="radio1?.valid||radio1?.untouched">
+												<section *ngIf="radio1?.errors?.['required']">{{'Please choose the appointment.'|translate}}</section>
+												<!-- <div *ngIf="radio1?.errors?.['pattern']">يجب عليك اختيار موعد أخر</div> -->
+											</section>
+									</section>
+											
+										
+										<section *ngIf="notfoundapp==true" class="text-center mb-3" style="background-color: rgb(230, 13, 103);">{{'There are no appointments for  this day'|translate}}</section>	
+											
+								
+
+						<section class="text-center">
+							
+						<section class="form-btn">
+							<button class="btn btn-warning p-2" >{{'Book now'|translate}}</button>
+					</section>
+
+						</section>
+
+
+						</form>
+					</section>
+				</section>
+			
+		
+	</section>
+		<!-- Button trigger modal -->
+	
+
+
+
+	
+</section>

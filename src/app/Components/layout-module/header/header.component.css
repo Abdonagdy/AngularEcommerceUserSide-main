@@ -1,0 +1,144 @@
+*{
+    font-family: inherit;
+     font-size: 17px; 
+    /* font-weight: bold; */
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+
+
+}
+.hoba{
+  color: aliceblue;
+}
+
+
+.divcolor
+{
+  color: #888;
+
+}
+
+
+#imgde
+{
+  width: 3vw;
+}
+
+#imglogo{
+  width: 7vw;
+}
+.nv1{
+  font-size: 11px;
+  margin-top: 5px;
+  position: relative;
+}
+.buto1{
+  background-color: rgb(234, 233, 233);
+  border-radius: 4px 0px 0px 4px;
+  color: rgb(39, 39, 39);
+}
+
+
+
+#bo:hover{
+  background-color: rgb(197, 192, 192);
+  color: black;
+}
+option{
+  color: black;
+}
+option:hover{
+  color: aliceblue;
+  background-color: rgb(108, 105, 102);
+}
+
+.bouto2{
+  border-radius: 0px 4px 4px 0px;
+
+}
+#ancorsearch{
+  font-size: 25px;
+  margin-left: 5px;
+  margin-top: 1px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.img-ico{
+  width: 2vw;
+}
+.img-ico1{
+  width: 5vw;
+}
+
+a{
+  color: white;
+}
+
+
+
+#img-nav3{
+ width: 23vw;
+}
+
+.hovee:hover{
+  color: black !important;
+
+}
+
+
+.hovee:hover a,i{
+  color: black !important;
+
+}
+
+
+.he:hover aaa {
+  color:orange !important;
+  transition: all 200ms !important;
+  
+  }
+.h:hover 
+{
+  color: red;
+  background-color: #ffffff;
+  
+}
+
+
+.hover:hover
+{
+  color: red !important;
+}
+
+.k-item.k-state-hover .detail, .k-item.k-state-focused .detail {
+  color: #222;
+}
+
+
+.detail {
+ 
+  margin-bottom: 5px;
+  border-bottom: 2px solid #aaa;
+  z-index: 999;
+}
+
+.new-badge {
+  background-color:rgb(255, 166, 0);
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-left: 5px; /* قد يتطلب تعديل المسافة من الرابط */
+}
+
+
+svg {
+  
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+}

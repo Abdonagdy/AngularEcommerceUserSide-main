@@ -1,0 +1,180 @@
+<section class="container p-5" style="background-color: #f3f3f3;">
+  <section class="row">
+    <section class="alert alert-success d-flex col-5 p-2 mt-3 justify-content-start " role="alert" *ngIf="message1">
+      <section>
+          <i class="fa-solid fa-circle-check"></i>
+    
+      </section>
+    <section class="ms-2">
+      {{'Payment has been made to this address.' | translate}}
+    </section>
+    
+    </section>
+   <h1 class="text-center">{{'The addresses'|translate}}</h1>
+ 
+<ng-container *ngFor="let item of AllAdrees" >
+<section class="col-lg-6 col-md-12 col-sm-12 text-center " >    
+    <section class="text-center">
+        
+        <section class="page-body">
+            <table class="table table-striped table-bordered  table-hover">
+                <tbody>
+                  <tr>
+                    <th scope="row">{{'First Name'|translate}}</th>
+                    <td>{{item.fanme}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{'Last Name'| translate}}</th>
+                    <td>{{item.lanme}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{'Phone Number'|translate}}</th>
+                    <td>{{item.phone}}</td>
+                  </tr>
+                  <tr>
+                   <th scope="row">{{'Email'|translate}}</th>
+                   <td>{{item.email}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">{{'Country'|translate}}</th>
+                   <td>{{item.country}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">{{'City'| translate}}</th>
+                   <td>{{item.city}}</td>
+                 </tr>
+                 <tr>
+                   <th scope="row">{{'region'| translate}}</th>
+                   <td>{{item.region}}</td>
+                 </tr>
+                 <tr>
+                  <th ><button type="button" class="btn btn-warning mb-3"  (click)="PayUserAddress(item)">{{'Pay For This Address' | translate}}</button> </th>
+                  <th><button class="btn btn-danger" (click)="onDelete(item.id)">{{'Delete' |translate}}</button></th>
+                 </tr>
+                </tbody>
+              </table>
+              
+              
+        </section>
+    </section>
+</section>
+</ng-container>
+</section> 
+</section>
+
+
+<section class="container-fluid">
+<section class="row" *ngIf="ChekoutForm"  [formGroup]="ChekoutForm">
+  <h3 class="text-center mb-3 mt-3">{{'Add New Address' | translate}}</h3>
+
+
+<section class="alert alert-success d-flex col-5 p-2 mt-3 justify-content-start " role="alert" *ngIf="message">
+  <section>
+      <i class="fa-solid fa-circle-check"></i>
+
+  </section>
+<section class="ms-2">
+  {{'You have successfully added the address. Thank you.' | translate}}
+</section>
+
+</section>
+
+<form #dressform="ngForm" class="row" formGroupName="adressform">
+
+
+  <section class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+    <span class="form-label">{{'First Name' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+    <input class="form-control"   type="text"    name="Fname" id="Fname" formControlName="Fname"  placeholder="{{'Enter your FirstName'|translate}}" >
+  </section>
+  <section class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+    <span class="form-label">{{'Last Name' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+    <input class="form-control"   type="text"    name="Lname" id="Lname" formControlName="Lname"  placeholder="{{'Enter your LastName'|translate}}" >
+  </section>
+
+  <section class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+    <span class="form-label">{{'Email' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+    <input class="form-control"   type="text"    name="Email" id="Email" formControlName="Email"  placeholder="{{'Enter Your Email' |translate}}" 
+    [class.is-invalid]="adress.Email?.invalid && adress.Email?.touched">
+    <section class="invalid-feedback" [hidden]="adress.Email?.valid||adress.Email?.untouched">
+      <section *ngIf="adress.Email?.errors?.['required']">{{'Please write your Email' | translate}}</section>
+   </section>
+  </section>
+
+  <section class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+    <span class="form-label">{{'Phone Number' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+    <input class="form-control"   type="text"    name="PhoneNumber" id="PhoneNumber" formControlName="PhoneNumber"   placeholder="{{'Enter your phone number'|translate}}" 
+    >
+   
+  </section>
+
+  <section class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+    <label for="Country">{{'Country' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>      
+        
+            <select class="form-control" id="Country" name="Country" formControlName="Country"
+            [class.is-invalid]="adress.Country?.invalid && adress.Country?.touched">
+                <option value="Saudi">{{'Saudi' | translate}}</option>
+               </select>
+            <section class="invalid-feedback" [hidden]="adress.Country?.valid||adress.Country?.untouched">
+              <section *ngIf="adress.Country?.errors?.['required']">{{'Please Select your Country' | translate}}</section>
+           </section>
+  </section>
+
+<!-- 
+  <div class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+    <label for="City" class="form-label">{{'City' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>  
+    <input type="text" class="form-control" id="City" name="City" formControlName="City"
+      [class.is-invalid]="adress.City?.invalid && adress.City?.touched">
+    <div class="invalid-feedback" [hidden]="adress.City?.valid||adress.City?.untouched">
+      <div *ngIf="adress.City?.errors?.['required']">{{'Please write your City' | translate}}</div>
+   </div>
+  </div> -->
+
+
+
+  <section class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+    <label class="text-black" for="City">{{'Please Select City' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>
+    <select required  class="form-control"  name="City"  id="City"  formControlName="City"
+    [class.is-valid]="adress.City?.valid"  (change)="onSelectChange($event.target)">
+    <option  disabled selected>{{'Please Select City'|translate}}</option>
+    <option *ngFor="let item of AllMadina" [value]="item.cityName" >
+       {{item.cityName}}
+    </option>
+     </select>
+     <section class="alert alert-danger"[hidden]="adress.City?.valid||adress.City?.untouched">
+       <section *ngIf="adress.City?.errors?.['required']">{{'Please Select City' | translate}} </section>
+      </section>
+ </section>
+
+
+
+
+
+  <section class="form-group mt-2  col-lg-4 col-md-6 col-sm-12">
+     <label class="text-black" for="Region">{{'Please Select Branch' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>
+     <select required  class="form-control"  name="Region"  id="Region"  formControlName="Region"
+     [class.is-valid]="adress.Region?.valid"  [(ngModel)]="selectedBranch">
+     <option value="0" disabled selected>{{'Please Select Branch' |translate}}</option>   
+     <option *ngFor="let item of AllBranshs" [value]="item.braname" >
+        {{item.braname}}
+      </option>
+
+      </select>
+      <section class="alert alert-danger"[hidden]="adress.Region?.valid||adress.Region?.untouched">
+        <section *ngIf="adress.Region?.errors?.['required']">{{'Please Select Branch' | translate}} </section>
+       </section>
+  </section>
+  <section class="text-center mt-3">
+    <button type="button" class="btn btn-warning mb-3"  (click)="SafeUserAddress()">{{'Save' | translate}}</button>
+  </section>
+</form>
+<section class="d-flex justify-content-between flex-row mt-3 mb-5">
+  <button type="button" class="btn btn-primary" routerLink="/basket"><i class="fa fa-angle-left me-2"></i>{{'Back' | translate}}</button>
+  <button type="button" class="btn btn-primary"   cdkStepperNext>{{'Next' | translate}}<i class="fa fa-angle-right ms-2"></i></button>
+
+
+</section>
+</section>
+</section>
+
+
+

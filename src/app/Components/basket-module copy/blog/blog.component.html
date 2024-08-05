@@ -1,0 +1,43 @@
+<section class="p-3" style="background-color: #fff;">
+	<div class="p-2">
+    <p class="text-center" style="font-weight: bold;">{{urldesc}}</p>
+  </div>
+</section>
+
+<main class="container-fluid  p-5" style="background-color: #f3f3f3;" dir="rtl">
+    <div class="row  mb-2">
+      <ng-container *ngFor="let item of bloglistitem">
+      <div class="col-lg-6 col-md-12 col-12 ">
+      <div class="col-12 bg-white">
+        <div class="row g-0 border rounded  flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <ng-container *ngIf="item.imageURL ==null">
+          <div class="col-12 p-4 d-flex flex-column position-static" style="height: 300px;">
+            <strong class="d-inline-block mb-2 text-primary text-center">{{item.articalName}}</strong>
+            <h3 class="mb-0">{{item.articalTitle}}</h3>
+            <div class="mb-1 mt-1 text-muted">{{item.date}}</div>
+            <span class="card-text mb-auto d-inline" style="overflow: hidden;" [innerHTML]="item.articalDescription|slice:0:100"></span>
+           <a (click)=" VeiwProduct(item.articalId , item.articalName)" class="stretched-link text-warning text-decoration-none" style="cursor: pointer;font-size: 20px;">قراءة المزيد</a>
+          </div>
+          </ng-container>
+          <ng-container *ngIf="item.imageURL !=null">
+            <div class="col-7 p-4 d-flex flex-column position-static" style="height: 300px;">
+              <strong class="d-inline-block mb-2 text-primary text-center">{{item.articalName}}</strong>
+              <h3 class="mb-0">{{item.articalTitle}}</h3>
+              <div class="mb-1 mt-1 text-muted">{{item.date}}</div>
+              <span class="card-text mb-auto d-inline" style="overflow: hidden;" [innerHTML]="item.articalDescription|slice:0:100"></span>
+             <a (click)=" VeiwProduct(item.articalId , item.articalName)" class="stretched-link text-warning text-decoration-none" style="cursor: pointer;font-size: 20px;">قراءة المزيد</a>
+            </div>
+            <div class="col-5 d-md-block d-lg-block" >
+            <img src={{item.imageURL}} style="width: 100%;height:300px ;" alt="">
+          </div>
+        </ng-container>
+        </div>
+      </div>
+  </div>
+</ng-container>
+
+</div>  
+</main>
+
+
+

@@ -1,0 +1,167 @@
+<section class="p-3" style="background-color: #fff;">
+	<div class="p-2">
+    <p class="text-center" style="font-weight: bold;">{{urldesc}}</p>
+  </div>
+</section>
+
+
+
+<div class="container-fluid p-5" style="background-color: #f3f3f3;">
+
+  <div class="container" >
+    <div class="row">
+      <div class="form-header">
+        <div class="container mb-5">
+          <div style="text-align:center;color: black;" class="animated-text ">
+                  <h2>أهلاً وسهلاً عملائنا الكرام! اكتشف خدمتنا الجديدة لصيانة سيارات شانجان، نضمن لك الجودة والاعتناء بسيارتك كما تستحق</h2>
+                  <ul style="list-style: none;">
+                      <li>خدمة متخصصة</li>
+                      <li>فريق عمل محترف</li>
+                      <li>عروض خاصة للعملاء الجدد</li>
+                    </ul>
+                  <p>احجز موعدك الآن واستمتع بخصوماتنا الخاصة لأول عملاء الخدمة الجديدة.</p>
+                  <!-- <a routerLink="/Sangan" class="btn btn-outline-warning">احجز الآن</a> -->
+          </div>   
+    </div>
+  
+      </div>
+  
+  
+      
+      <form [formGroup]="RegisterForm" (ngSubmit)="CreateReservation()" class="row mt-3 mb-2"> 
+        
+        
+  
+        <div class="form-group mt-2  col-lg-3 col-md-6 col-sm-12">
+          <span class="form-label">{{'First Name' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+          <input class="form-control"   type="text"    name="Fname" id="Fname" formControlName="Fname"  placeholder="{{'Enter your FirstName'|translate}}">
+        </div>
+        <div class="form-group mt-2  col-lg-3 col-md-6 col-sm-12">
+          <span class="form-label">{{'Last Name' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+          <input class="form-control"   type="text"    name="Lname" id="Lname" formControlName="Lname"  placeholder="{{'Enter your LastName'|translate}}" >
+        </div>
+      
+        <div class="form-group mt-2  col-lg-3 col-md-6 col-sm-12">
+          <span class="form-label">{{'Email' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+          <input class="form-control"   type="text"    name="Email" id="Email" formControlName="Email"  placeholder="{{'Enter Your Email' |translate}}" 
+          [class.is-invalid]="Email?.invalid && Email?.touched">
+          <div class="invalid-feedback" [hidden]="Email?.valid||Email?.untouched">
+            <div *ngIf="Email?.errors?.['required']">{{'Please write your Email' | translate}}</div>
+         </div>
+        </div>
+      
+        <div class="form-group mt-2  col-lg-3 col-md-6 col-sm-12">
+          <span class="form-label">{{'Phone Number' | translate}}</span><span style="color: red !important; display: inline; float: none;">*</span>  
+          <input class="form-control"   type="text"    name="PhoneNumber" id="PhoneNumber" formControlName="PhoneNumber"   placeholder="{{'Enter your phone number'|translate}}">
+        </div>
+      
+  
+     
+        <div class="col-lg-3 col-md-6 col-sm-12">
+        <label class="text-black" for="Model">{{'Please Select Model' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>  
+      <select class="form-select" aria-label="Default select example"    required  class="form-control"  name="Model"  id="Model"  formControlName="Model"
+      [class.is-valid]="Model?.valid" (change)="onSelectChange($event.target)">
+          <option  disabled selected>{{'Select from the dropdown menu' |translate}}</option>
+          <option *ngFor="let item of AllModelCae" [value]="item.id">{{item.name}}</option>
+      </select>
+        </div>
+  
+  
+     <div class="col-lg-3 col-md-6 col-sm-12">
+      <label class="text-black" for="Car">{{'Please Select Car' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>  
+      <select class="form-select" aria-label="Default select example"  required  class="form-control"  name="Car"  id="Car"  formControlName="Car"
+      [class.is-valid]="Car?.valid" (change)="onSelectChangecarname($event.target)">
+          <option disabled selected>{{'Select from the dropdown menu' |translate}}</option>
+          <option  *ngFor="let item of Allcarbymodel"  [value]="item.id">{{item.name}}</option>
+        </select>
+     </div>
+  
+  
+  
+     <div class="col-lg-3 col-md-6 col-sm-12">
+      <label class="text-black" for="Year">{{'Please Select Year' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>
+      <select class="form-select" aria-label="Default select example"  require  class="form-control"  name="Year"  id="Year"  formControlName="Year"
+      [class.is-valid]="Year?.valid"  (change)="onSelectChangeYear($event.target)">
+          <option selected>{{'Select from the dropdown menu' |translate}}</option>
+          <option  *ngFor="let item of Allyear"  [value]="item.id">{{item.yearNname}}</option>
+        </select>
+  
+     </div>
+  
+     <div class="col-lg-3 col-md-6 col-sm-12">
+      <label class="text-black" for="EngineTpe">{{'Please Select EngineTpe' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>
+      <select class="form-select" aria-label="Default select example"  require  class="form-control"  name="EngineTpe"  id="EngineTpe"  formControlName="EngineTpe"
+      [class.is-valid]="EngineTpe?.valid">
+          <option selected>{{'Select from the dropdown menu' |translate}}</option>
+          <option  *ngFor="let item of AllEnginnetype"  [value]="item.id">{{item.name}}</option>
+        </select>
+  
+     </div>
+     
+     <div class="col-lg-3 col-md-6 col-sm-12">
+      <label class="text-black" for="Distance">{{'Please select the maintenance type' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>  
+      <select class="form-select" aria-label="Default select example"  required  class="form-control"  name="Distance"  id="Distance"  formControlName="Distance"
+      [class.is-valid]="Distance?.valid" (change)="onSelectChange1($event.target)">
+          <option disabled selected>{{'Select from the dropdown menu' |translate}}</option>
+          <option  *ngFor="let item of AllDistance"  [value]="item.id">{{item.name}}</option>
+        </select>
+     </div>
+  
+     <div class="form-group mt-2  col-lg-3 col-md-6 col-sm-12">
+      <label class="text-black" for="City">{{'Please Select City' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>
+      <select required  class="form-control"  name="City"  id="City"  formControlName="City"
+      [class.is-valid]="City?.valid"  (change)="onSelectMadinaChange($event.target)">
+      <option  disabled selected>{{'Please Select City'|translate}}</option>
+      <option *ngFor="let item of AllMadina" [value]="item.cityName" >
+         {{item.cityName}}
+      </option>
+       </select>
+       <div class="alert alert-danger"[hidden]="City?.valid||City?.untouched">
+         <div *ngIf="City?.errors?.['required']">{{'Please Select City' | translate}} </div>
+        </div>
+   </div>
+  
+  
+  
+  
+  
+    <div class="form-group mt-2  col-lg-3 col-md-6 col-sm-12">
+       <label class="text-black" for="Region">{{'Please Select Branch' | translate}}</label><span style="color: red !important; display: inline; float: none;">*</span>
+       <select required  class="form-control"  name="Region"  id="Region"  formControlName="Region"
+       [class.is-valid]="Region?.valid"  [(ngModel)]="selectedBranch">
+       <option value="0" disabled selected>{{'Please Select Branch' |translate}}</option>   
+       <option *ngFor="let item of AllBranshs" [value]="item.brannum" >
+          {{item.braname}}
+        </option>
+  
+        </select>
+        <div class="alert alert-danger"[hidden]="Region?.valid||Region?.untouched">
+          <div *ngIf="Region?.errors?.['required']">{{'Please Select Branch' | translate}} </div>
+         </div>
+    </div>
+     <div class="col-lg-12 col-md-12 col-sm-12 d-flex flex-column justify-content-center mt-5 mb-5">
+      <p>{{'All Services'|translate}}</p>
+      <div *ngFor="let item of Allservice">
+        <label for="CarService">{{ item.name }}</label>
+        <div *ngFor="let price of item.prices">
+          <label>
+            <input type="checkbox" [value]="price.price" (change)="onCheckboxChange(item,price)"  checked>
+            {{ price.name }}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <p class="text-warning ">{{'Total Price:'|translate}} {{ totalPrice }}</p>
+      <p class="text-warning ">{{'Tax'|translate}} {{tax|number:'1.2-2'}}</p>
+    </div>
+    <div class="text-center mt-3">
+      <button class="btn btn-warning" >{{'Book now'|translate}}</button>
+    </div>
+    
+      </form>
+    </div>
+      
+  </div>
+</div>
+

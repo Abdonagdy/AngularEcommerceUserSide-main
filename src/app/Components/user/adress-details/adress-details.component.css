@@ -1,0 +1,8 @@
+.hover:hover{
+    background-color: black !important;
+    color: #fff !important;
+}
+.hover:hover a
+{
+    color: #fff !important;
+}
